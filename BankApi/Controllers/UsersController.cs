@@ -48,13 +48,18 @@ public class UsersController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Username,Name,Email,Address,Phone,PictureURL,PasswordHash,PasswordSalt,IsActive,Accounts")] User user)
+    public async Task<IActionResult> Create([Bind("Username,Name,Email,Address,Phone,PictureURL,Password")] UserCreateProfile userCreateProfile)
     {
+        //check whether user submitted information was correct
         if (ModelState.IsValid)
         {
-            _context.Add(user);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            //generate a salt for user's pw
+            string passwordSalt = 
+
+
+            //_context.Add(user);
+            //await _context.SaveChangesAsync();
+            //return RedirectToAction(nameof(Index));
         }
         return View(user);
     }

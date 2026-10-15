@@ -53,16 +53,50 @@ public class UsersController : Controller
         //check whether user submitted information was correct
         if (ModelState.IsValid)
         {
-            //generate a salt for user's pw
-            string passwordSalt = 
+            byte[] salt = HashingHelper.GenerateSalt();
+            string hashedPassword = HashingHelper.HashPassword(userCreateProfile.Password, salt);
 
+            //create a user tntity to store in dbs
+            User user = new User
+            {
+                Username = userCreateProfile.Username,
+                Name = userCreateProfile.Name,
+                Email = userCreateProfile.Email,
+                Address = userCreateProfile.Address,
+                Phone = userCreateProfile.Phone,
+                PictureURL = userCreateProfile.PictureURL,
+                PasswordHash = hashedPassword,
+                PasswordSalt = Convert.ToBase64String(salt),
+                IsActive = true
+            };
 
-            //_context.Add(user);
-            //await _context.SaveChangesAsync();
-            //return RedirectToAction(nameof(Index));
+            //add user to dbs
+            _context.Add(user);
+            //save the changes to the dbs
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
-        return View(user);
+        //returns 201 created with a location header 
+        return CreatedAtAction (
+            nameof(GetUser),
+            new { id = user.Id },
+            new UserResponse
+            {
+                Id = user.Id,
+                Username = user.Username,
+                Name = user.Name,
+                Email = user.Email,
+                Address = user.Address,
+                Phone = user.Phone,
+                PictureURL = user.PictureURL,
+                IsActive = user.IsActive
+            }
+        );
     }
+
+    //get a user profile using Id
+    [HttpGet("{id}")]
+    
 
     // GET: USERS/Edit/5
     public async Task<IActionResult> Edit(int? id)

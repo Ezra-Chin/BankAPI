@@ -51,49 +51,100 @@ public class UsersController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Username,Name,Email,Address,Phone,PictureURL,Password")] UserCreateProfile userCreateProfile)
     {
-        //check whether user submitted information was correct
-        if (ModelState.IsValid)
+        //check whether user submitted information is invalid
+        if (!ModelState.IsValid)
         {
-            byte[] salt = HashingHelper.GenerateSalt();
-            string hashedPassword = HashingHelper.HashPassword(userCreateProfile.Password, salt);
-
-            //create a user tntity to store in dbs
-            User user = new User
+            //IM NOT SURE ABOUT THIS ENTIRE ERROR BLOCK
+            var details = new Dictionary<string, string[]>();
+            
+            //go thru each field in ModelState
+            for each (var item in ModelState)
             {
-                Username = userCreateProfile.Username,
-                Name = userCreateProfile.Name,
-                Email = userCreateProfile.Email,
-                Address = userCreateProfile.Address,
-                Phone = userCreateProfile.Phone,
-                PictureURL = userCreateProfile.PictureURL,
-                PasswordHash = hashedPassword,
-                PasswordSalt = Convert.ToBase64String(salt),
-                IsActive = true
-            };
+                //check if the field has any validation errors
+                if (item.Value.Errors.Count > 0)
+                {
+                    //store field error msg in details dictionary
+                    details[item.Key] = item.Value.Errors
+                        .Select(error => 
+                            //use a default msg if error msg is empty
+                            string.IsNullorEmpty(error.ErrorMessage) 
+                                ? "Invalid Value" : error.ErrorMessage)
+                        //convert error msg into array
+                        .ToArray();
+                }
+            }
 
-            //add user to dbs
-            _context.Add(user);
-            //save the changes to the dbs
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return BadRequest (new ApiError(
+                "Validation Error",
+                "One or more fields are invalid",
+                details
+            ));
         }
-        //returns 201 created with a location header 
-        return CreatedAtAction (
+
+        //THIS TOO
+        bool usernameExist = await _context.Users.AnyAsync(u => u.Username == userCreateProfile.Username);
+        if (usernameExist)
+        {
+            return Conflict (new ApiError(
+                "Duplicate Username",
+                "This username is already taken"
+            ));
+        }
+
+        //THIS TOO
+        bool emailExist = await _context.Users.AnyAsync(u => u.Email == userCreateProfile.Email);
+        if (emailExist)
+        {
+            return Conflict (new ApiError(
+                "Duplicate Email",
+                "This email is already taken"
+            ));
+        }
+
+        byte[] salt = HashingHelper.GenerateSalt();
+        string hashedPassword = HashingHelper.HashPassword(userCreateProfile.Password, salt);
+
+        //create a user tntity to store in dbs
+        var user = new User
+        {
+            Username = userCreateProfile.Username,
+            Name = userCreateProfile.Name,
+            Email = userCreateProfile.Email,
+            Address = userCreateProfile.Address,
+            Phone = userCreateProfile.Phone,
+            PictureURL = userCreateProfile.PictureURL,
+            PasswordHash = hashedPassword,
+            PasswordSalt = Convert.ToBase64String(salt),
+            IsActive = true
+        };
+
+        //add user to dbs
+        _context.Add(user);
+        //save the changes to the dbs
+        await _context.SaveChangesAsync();
+        
+        //return RedirectToAction(nameof(Index));
+
+        //returns 201 created with a location header
+        var userResponse = new UserResponse
+        {
+            Id = user.Id,
+            Username = user.Username,
+            Name = user.Name,
+            Email = user.Email,
+            Address = user.Address,
+            Phone = user.Phone,
+            PictureURL = user.PictureURL,
+            IsActive = user.IsActive
+        };
+
+        return CreatedAtAction(
             nameof(GetUser),
             new { id = user.Id },
-            new UserResponse
-            {
-                Id = user.Id,
-                Username = user.Username,
-                Name = user.Name,
-                Email = user.Email,
-                Address = user.Address,
-                Phone = user.Phone,
-                PictureURL = user.PictureURL,
-                IsActive = user.IsActive
-            }
+            userResponse
         );
     }
+}
 
     // GET: USERS/Edit/5
     //get user profile using id
@@ -106,7 +157,7 @@ public class UsersController : Controller
         //return 404 iif user does not exist
         if (user == null)
         {
-            return NotFound(new );
+            return NotFound(new ApiError("User Not Found", "User does not exist"));
         }
 
         //if exist
@@ -128,7 +179,7 @@ public class UsersController : Controller
             return NotFound();
         }*/
         
-        return View(user);
+        return Ok(userResponse);
     }
 
     // POST: USERS/Edit/5
@@ -203,4 +254,3 @@ public class UsersController : Controller
     {
         return _context.Users.Any(e => e.Id == id);
     }
-}

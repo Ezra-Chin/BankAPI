@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using BankApi.Models;
 using BankAPI.Data;
 
+[ApiController]
+[Route("api/users")]
 public class UsersController : Controller
 {
     private readonly DBManager _context;
@@ -51,56 +53,6 @@ public class UsersController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Username,Name,Email,Address,Phone,PictureURL,Password")] UserCreateProfile userCreateProfile)
     {
-        //check whether user submitted information is invalid
-        if (!ModelState.IsValid)
-        {
-            //IM NOT SURE ABOUT THIS ENTIRE ERROR BLOCK
-            var details = new Dictionary<string, string[]>();
-            
-            //go thru each field in ModelState
-            for each (var item in ModelState)
-            {
-                //check if the field has any validation errors
-                if (item.Value.Errors.Count > 0)
-                {
-                    //store field error msg in details dictionary
-                    details[item.Key] = item.Value.Errors
-                        .Select(error => 
-                            //use a default msg if error msg is empty
-                            string.IsNullorEmpty(error.ErrorMessage) 
-                                ? "Invalid Value" : error.ErrorMessage)
-                        //convert error msg into array
-                        .ToArray();
-                }
-            }
-
-            return BadRequest (new ApiError(
-                "Validation Error",
-                "One or more fields are invalid",
-                details
-            ));
-        }
-
-        //THIS TOO
-        bool usernameExist = await _context.Users.AnyAsync(u => u.Username == userCreateProfile.Username);
-        if (usernameExist)
-        {
-            return Conflict (new ApiError(
-                "Duplicate Username",
-                "This username is already taken"
-            ));
-        }
-
-        //THIS TOO
-        bool emailExist = await _context.Users.AnyAsync(u => u.Email == userCreateProfile.Email);
-        if (emailExist)
-        {
-            return Conflict (new ApiError(
-                "Duplicate Email",
-                "This email is already taken"
-            ));
-        }
-
         byte[] salt = HashingHelper.GenerateSalt();
         string hashedPassword = HashingHelper.HashPassword(userCreateProfile.Password, salt);
 
@@ -123,10 +75,10 @@ public class UsersController : Controller
         //save the changes to the dbs
         await _context.SaveChangesAsync();
         
-        //return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Index));
 
         //returns 201 created with a location header
-        var userResponse = new UserResponse
+        /*var userResponse = new UserResponse
         {
             Id = user.Id,
             Username = user.Username,
@@ -142,9 +94,9 @@ public class UsersController : Controller
             nameof(GetUser),
             new { id = user.Id },
             userResponse
-        );
+        );*/
     }
-}
+
 
     // GET: USERS/Edit/5
     //get user profile using id
@@ -254,3 +206,4 @@ public class UsersController : Controller
     {
         return _context.Users.Any(e => e.Id == id);
     }
+}

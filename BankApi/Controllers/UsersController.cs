@@ -46,6 +46,7 @@ public class UsersController : Controller
     // POST: USERS/Create
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //register new user
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Username,Name,Email,Address,Phone,PictureURL,Password")] UserCreateProfile userCreateProfile)
@@ -94,23 +95,39 @@ public class UsersController : Controller
         );
     }
 
-    //get a user profile using Id
-    [HttpGet("{id}")]
-    
-
     // GET: USERS/Edit/5
-    public async Task<IActionResult> Edit(int? id)
+    //get user profile using id
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetUser(int id)
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
+        //find user by id
         var user = await _context.Users.FindAsync(id);
+
+        //return 404 iif user does not exist
         if (user == null)
         {
-            return NotFound();
+            return NotFound(new );
         }
+
+        //if exist
+        var userResponse = new UserResponse
+        {
+            Id = user.Id,
+            Username = user.Username,
+            Name = user.Name,
+            Email = user.Email,
+            Address = user.Address,
+            Phone = user.Phone,
+            PictureURL = user.PictureURL,
+            IsActive = user.IsActive
+        };
+
+        
+        /*if (user == null)
+        {
+            return NotFound();
+        }*/
+        
         return View(user);
     }
 

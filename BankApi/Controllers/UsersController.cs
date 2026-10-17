@@ -54,12 +54,12 @@ public class UsersController : Controller
     //register new user
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Username,Name,Email,Address,Phone,PictureURL,Password")] UserCreateProfile userCreateProfile)
+    public async Task<IActionResult> Create([FromForm] UserCreateProfile userCreateProfile)
     {
         //assumption: email address are not case sensitive
         string email = userCreateProfile.Email.Trim().ToLower();
 
-        //to be changed for #7
+        //to be changed for #7 ref: WebAPI slide 31
         if (!IsPictureType(userCreateProfile.PictureURL))
         {
             return BadRequest("Picture must be in .jpg, .jpeg or .png format");
@@ -81,13 +81,6 @@ public class UsersController : Controller
         byte[] salt = HashingHelper.GenerateSalt();
         string hashedPassword = HashingHelper.HashPassword(userCreateProfile.Password, salt);
 
-        //save picture file 
-        string profilePicturePath = DefaultProfilePicture;
-        if (userCreateProfile.PictureURL != null)
-        {
-            profilePicturePath = await SaveProfilePicture(userCreateProfile.PictureURL);
-        }
-
         //create a user tntity to store in dbs
         var user = new User
         {
@@ -96,7 +89,7 @@ public class UsersController : Controller
             Email = userCreateProfile.Email,
             Address = userCreateProfile.Address,
             Phone = userCreateProfile.Phone,
-            PictureURL = userCreateProfile.PictureURL,
+            PictureURL = DefaultProfilePicture,
             PasswordHash = hashedPassword,
             PasswordSalt = Convert.ToBase64String(salt),
             IsActive = true
@@ -108,6 +101,13 @@ public class UsersController : Controller
         await _context.SaveChangesAsync();
 
         //return RedirectToAction(nameof(Index));
+
+        //if user upload a pic, save it. if not, use default.png
+        if (userCreateProfile.PictureURL != null)
+        {
+            user.PictureURL = await SaveProfilePicture(userCreateProfile.Picture, user.Id);
+            await _context.SaveChangesAsync();
+        }
 
         //returns 201 created with a location header
         return CreatedAtAction(
@@ -213,11 +213,9 @@ public class UsersController : Controller
         }
 
         //new profile picture
-        string? previousProfilePicture = null;
         if (userUpdateProfile.Picture != null)
         {
-            previousProfilePicture = user.PictureURL;
-            user.PictureURL = await SaveProfilePicture(userUpdateProfile.Picture);
+            user.PictureURL = await SaveProfilePicture(userUpdateProfile.Picture, user.Id);
         }
 
         //new password
@@ -230,12 +228,56 @@ public class UsersController : Controller
 
         await _context.SaveChangesAsync();
 
-        //delete previous pfp
-        DeleteProfilePicture(previousProfilePicture);
-
         //will return 204
         return NoContent();
     }
+
+    //deactivate user acc
+    //PATCH api/users/"username"/deactivate
+    [HttpPatch("{username}/deactivate")]
+    public async Task<IActionResult> DeactivateAccount(string username)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        user.IsActive = false;
+        await _context.SaveChangesAsync();
+        //will return 204
+        return NoContent();
+    }
+
+    //user login
+    //POST api/users/login
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] UserLogin userLogin)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == userLogin);
+
+        //hash the pw and use the same salt when user signed up
+        if (user != null)
+        {
+            byte[] salt = Convert.FromBase64String(user.PasswordSalt);
+            var hashedPassword = HashingHelper.HashPassword(login.Password, salt);
+
+            if (hashedPassword == user.PasswordHash)
+            {
+                if (!user.IsActive)
+                {
+                    return UnprocessableEntity("Account is deactivated");
+                }
+
+                //return 200
+                return Ok(uResponse(user));
+            }
+        }
+
+        //return 422 I suppose
+        return UnprocessableEntity("Username or password is incorrect");
+    }
+
 
     // POST: USERS/Edit/5
     // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -334,7 +376,7 @@ public class UsersController : Controller
         }
 
         //save filename as username+id
-        string filename = Path.GetFileName(id) + "_PFP" + Path.GetExtension(profilePicture.FileName).ToLower();
+        string filename = Path.GetFileName(id) + "_PFP" + DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(profilePicture.FileName).ToLower();
 
         return ProfilePictureFolder + "/" + filename;
     }

@@ -46,7 +46,7 @@ namespace BankAPI.Data
             Random rand = new Random(1);
 
             //20 users
-            string[] names = {"Sarah", "Bob", "Ben", "Alice", "Matilda", "Grace", "John", "Alice", "Daniel", "Liam", "Steve", "Daisy", "Coco", "Faith", "Hazel", "Olivia", "Nathan", "Ashley", "Tiara", "Amy"};
+            string[] names = {"Sarah", "Bob", "Ben", "Alice", "Matilda", "Grace", "John", "Clio", "Daniel", "Liam", "Steve", "Daisy", "Coco", "Faith", "Hazel", "Olivia", "Nathan", "Ashley", "Tiara", "Amy"};
 
             List<User> users = new List<User>();
             for (int i = 1; i <= 20; i++)
@@ -74,7 +74,7 @@ namespace BankAPI.Data
             //30 accounts
             //first 10 users will have 2 acc each, the rest hv one only
             List<Account> accounts = new List<Account>();
-            for (int i = 1; i < 30; i++)
+            for (int i = 1; i <= 30; i++)
             {
                 Account account = new Account();
                 account.Id = i;
@@ -113,7 +113,7 @@ namespace BankAPI.Data
                 }
                 else
                 {
-                    accID = random.Next(1,31);
+                    accID = rand.Next(1,31);
                 }
 
                 Account account = accounts[accID - 1];
@@ -122,12 +122,12 @@ namespace BankAPI.Data
                 //user owns multiple acc but still under same ID
                 transaction.RelatedAccountId = accID;
 
-                decimal amount = random.Next(10, 10000);
+                decimal amount = rand.Next(10, 10000);
                 transaction.Amount = amount;
 
                 //either deposit or withdrawal
                 //(2) means 0 -> true (withdraw), 1 -> false (deposit)
-                if (i > 30 && random.Next(2) == 0 && amount <= account.Balance)
+                if (i > 30 && rand.Next(2) == 0 && amount <= account.Balance)
                 {
                     transaction.Type = "Withdrawal";
                     account.Balance = account.Balance - amount;

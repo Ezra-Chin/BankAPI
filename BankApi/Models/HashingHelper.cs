@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System,Text;
 
 //reference source: https://www.w3computing.com/articles/implementing-secure-password-hashing-and-salting-in-c-web-applications/
 namespace BankApi.Models

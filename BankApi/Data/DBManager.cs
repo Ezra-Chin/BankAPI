@@ -42,7 +42,7 @@ namespace BankAPI.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
             //data seeding
-            //(1) so that it gives the same num each run
+            //fixed seed (1) so that rand gives the same random num each run
             Random rand = new Random(1);
 
             //20 users
@@ -53,8 +53,9 @@ namespace BankAPI.Data
             {
                 string name = names[i - 1];
 
-                //generate a random salt
-                byte[] salt = RandomNumberGenerator.GetBytes(16);
+                //generate a random salt per user, gives the same salt every run 
+                byte[] salt = new byte[16];
+                rand.NextBytes(salt);
 
                 User user = new User();
                 user.Id = i;
@@ -63,7 +64,7 @@ namespace BankAPI.Data
                 user.Email = name.ToLower() + "@gmail.com";
                 user.Address = i + "Road, Malaysia";
                 user.Phone = "+6012000000" + i.ToString();
-                user.PictureURL = "/profilepicture/user" + i + ".png";
+                user.PictureURL = "ProfilePictures/default.png";
                 user.PasswordHash = HashingHelper.HashPassword("Password123", salt);
                 user.PasswordSalt = Convert.ToBase64String(salt);
                 user.IsActive = true;
@@ -96,6 +97,8 @@ namespace BankAPI.Data
 
             //500 transactions
             List<Transaction> transactions = new List<Transaction>();
+            //fixed start date, so seed data is same evert run
+            DateTime startDate = new DateTime(2026, 1, 1, 8, 0, 0);
 
             for (int i = 1; i <= 500; i++)
             {

@@ -4,16 +4,19 @@ using Microsoft.EntityFrameworkCore;
 using BankApi.Models;
 using BankAPI.Data;
 
+//rmv if not needed
+using Microsoft.AspNetCore.Hosting;
+
 [ApiController]
 [Route("api/users")]
 public class UsersController : Controller
 {
     private readonly DBManager _context;
-
+    
     //pfp folder (both user uploads and the default one if user didnt upload any)
     private const string ProfilePictureFolder = "ProfilePictures";
     private const string DefaultProfilePicture = "ProfilePictures/default.png";
-    private static readonly string[] IsPictureType = {".jpg", ".jpeg", ".png"};
+    private static readonly string[] AllowedPictureType = {".jpg", ".jpeg", ".png"};
 
     public UsersController(DBManager context)
     {
@@ -27,7 +30,7 @@ public class UsersController : Controller
     }
 
     // GET: USERS/Details/5
-    public async Task<IActionResult> Details(int? id)
+    public async Task<IActionResult> Details(int id)
     {
         if (id == null)
         {
@@ -65,18 +68,17 @@ public class UsersController : Controller
             return BadRequest("Picture must be in .jpg, .jpeg or .png format");
         }
 
-        bool usernameExists = await _context.Users.AnyAsync(u => u.Username == userCreateProfile.Username)
+        bool usernameExists = await _context.Users.AnyAsync(u => u.Username == userCreateProfile.Username);
         if (usernameExists)
         {
-            return Conflict("This username is already taken");
+            return Conflict(new ApiError("USERNAME_TAKEN", "This username is already taken"));
         }
 
-        bool emailExists = await _context.Users.AnyAsync(u => u.Email == userCreateProfile.Email)
+        bool emailExists = await _context.Users.AnyAsync(u => u.Email == userCreateProfile.Email);
         if (emailExists)
         {
-            return Conflict("This email address is already taken");
+            return Conflict(new ApiError("EMAIL_TAKEN", "This email address is already taken"));
         }
-
 
         byte[] salt = HashingHelper.GenerateSalt();
         string hashedPassword = HashingHelper.HashPassword(userCreateProfile.Password, salt);
@@ -108,7 +110,7 @@ public class UsersController : Controller
             user.PictureURL = await SaveProfilePicture(userCreateProfile.Picture, user.Id);
             await _context.SaveChangesAsync();
         }
-
+        
         //returns 201 created with a location header
         return CreatedAtAction(
             nameof(GetUserByUsername),
@@ -135,9 +137,9 @@ public class UsersController : Controller
         return Ok(uResponse(user));
     }
 
-    // GET api/users/"email"
+    // GET api/users/email/"email"
     //get user profile using email
-    [HttpGet("{email}")]
+    [HttpGet("email/{email}")]
     public async Task<IActionResult> GetUserByEmail(string email)
     {
         //find user by email
@@ -168,7 +170,7 @@ public class UsersController : Controller
             return NotFound();
         }
 
-        if (!IsPictureType(userCreateProfile.PictureURL))
+        if (!IsPictureType(userCreateProfile.Picture))
         {
             return BadRequest("Picture must be in .jpg, .jpeg or .png format");
         }
@@ -176,19 +178,19 @@ public class UsersController : Controller
         //only change if its not taken cause these are meant to be unique (ref: Data/DBManager.cs)
         if (userUpdateProfile.username != null)
         {
-            string username = userUpdateProfile.Username;
-            bool usernameTaken = await _context.Users.AnyAsync(u => u.Username == username);
+            string newUsername = userUpdateProfile.Username;
+            bool usernameTaken = await _context.Users.AnyAsync(u => u.Username == newUsername);
             if (usernameTaken)
             {
-                return Conflict("This username is taken already.");
+                return Conflict(new ApiError("USERNAME_TAKEN", "This username is taken already."));
             }
-            user.Username = username;
+            user.Username = newUsername;
         }
 
         if (userUpdateProfile.Email != null)
         {
-            string email = userUpdateProfile.Email;
-            bool emailTaken = await _context.Users.AnyAsync(u => u.Email == email);
+            string newEmail = userUpdateProfile.Email;
+            bool emailTaken = await _context.Users.AnyAsync(u => u.Email == newEmail);
             if (emailTaken)
             {
                 return Conflict("This email address is taken already.");
@@ -240,7 +242,7 @@ public class UsersController : Controller
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
         if (user == null)
         {
-            return NotFound();
+            return NotFound(new ApiError("USER_NOT_FOUND", "User does not exist"));
         }
 
         user.IsActive = false;
@@ -254,19 +256,19 @@ public class UsersController : Controller
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] UserLogin userLogin)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == userLogin);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == userLogin.Username);
 
         //hash the pw and use the same salt when user signed up
         if (user != null)
         {
             byte[] salt = Convert.FromBase64String(user.PasswordSalt);
-            var hashedPassword = HashingHelper.HashPassword(login.Password, salt);
+            var hashedPassword = HashingHelper.HashPassword(userLogin.Password, salt);
 
             if (hashedPassword == user.PasswordHash)
             {
                 if (!user.IsActive)
                 {
-                    return UnprocessableEntity("Account is deactivated");
+                    return UnprocessableEntity(new ApiError("ACCOUNT_DEACTIVATED", "Account is deactivated"));
                 }
 
                 //return 200
@@ -275,7 +277,7 @@ public class UsersController : Controller
         }
 
         //return 422 I suppose
-        return UnprocessableEntity("Username or password is incorrect");
+        return UnprocessableEntity(new ApiError( "INVALID_USERNAME_PASSWORD" ,"Username or password is incorrect"));
     }
 
 
@@ -361,7 +363,7 @@ public class UsersController : Controller
         }
         //get file type
         string extension = Path.GetExtension(profilePicture.FileName).ToLower();
-        return IsPictureType.Contains(extension);
+        return AllowedPictureType.Contains(extension);
 
         //else it will return 400
     }
@@ -376,9 +378,17 @@ public class UsersController : Controller
         }
 
         //save filename as username+id
-        string filename = Path.GetFileName(id) + "_PFP" + DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(profilePicture.FileName).ToLower();
+        string filename = id + "_PFP" + DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(profilePicture.FileName).ToLower();
+        string path = ProfilePictureFolder + "/" + filename;
 
-        return ProfilePictureFolder + "/" + filename;
+        //write the uploaded file to the folder
+        //ref source: https://stackoverflow.com/questions/53857251/uploading-files-to-a-directory-with-an-asp-net-core-web-application-hosted-on-az
+        using var stream = new FileStream(path, FileMode.Create)
+        {
+            await profilePicture.CopyToAsync(stream);
+        }
+
+        return path;
     }
 
     //return all except for password hash & salt

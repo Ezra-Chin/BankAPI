@@ -56,7 +56,7 @@ public class UsersController : Controller
     // POST api/users
     //register new user
     [HttpPost]
-    [ValidateAntiForgeryToken]
+    //[ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([FromForm] UserCreateProfile userCreateProfile)
     {
         //assumption: email address are not case sensitive
@@ -140,10 +140,10 @@ public class UsersController : Controller
     // GET api/users/email/"email"
     //get user profile using email
     [HttpGet("email/{email}")]
-    public async Task<IActionResult> GetUserByEmail(string paramEmail)
+    public async Task<IActionResult> GetUserByEmail(string Email)
     {
         //find user by email
-        string email = paramEmail.Trim().ToLower();
+        string email = Email.Trim().ToLower();
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     
         //return 404 iif user does not exist
@@ -179,7 +179,7 @@ public class UsersController : Controller
         if (userUpdateProfile.Username != null)
         {
             string newUsername = userUpdateProfile.Username;
-            bool usernameTaken = await _context.Users.AnyAsync(u => u.Username == newUsername);
+            bool usernameTaken = await _context.Users.AnyAsync(u => u.Username == newUsername && u.Id != user.Id);
             if (usernameTaken)
             {
                 return Conflict(new ApiError("USERNAME_TAKEN", "This username is taken already."));
@@ -190,7 +190,7 @@ public class UsersController : Controller
         if (userUpdateProfile.Email != null)
         {
             string newEmail = userUpdateProfile.Email;
-            bool emailTaken = await _context.Users.AnyAsync(u => u.Email == newEmail);
+            bool emailTaken = await _context.Users.AnyAsync(u => u.Email == newEmail && u.Id != user.Id);
             if (emailTaken)
             {
                 return Conflict("This email address is taken already.");
@@ -369,6 +369,7 @@ public class UsersController : Controller
     }
 
     //save pictureand return path to store in dbs
+    //IFormFile -> takes file uploaded by user and accesses its contents and file information
     public async Task<string> SaveProfilePicture(IFormFile profilePicture, int id)
     {
         //ref source: https://stackoverflow.com/questions/4087564/how-can-i-save-an-image-to-the-file-system

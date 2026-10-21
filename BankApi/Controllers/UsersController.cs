@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BankApi.Models;
-using BankAPI.Data;
+using BankApi.Data;
 
 //rmv if not needed
 using Microsoft.AspNetCore.Hosting;
@@ -63,7 +63,7 @@ public class UsersController : Controller
         string email = userCreateProfile.Email.Trim().ToLower();
 
         //to be changed for #7 ref: WebAPI slide 31
-        if (!IsPictureType(userCreateProfile.PictureURL))
+        if (!IsPictureType(userCreateProfile.Picture))
         {
             return BadRequest("Picture must be in .jpg, .jpeg or .png format");
         }
@@ -105,7 +105,7 @@ public class UsersController : Controller
         //return RedirectToAction(nameof(Index));
 
         //if user upload a pic, save it. if not, use default.png
-        if (userCreateProfile.PictureURL != null)
+        if (userCreateProfile.Picture != null)
         {
             user.PictureURL = await SaveProfilePicture(userCreateProfile.Picture, user.Id);
             await _context.SaveChangesAsync();
@@ -140,10 +140,10 @@ public class UsersController : Controller
     // GET api/users/email/"email"
     //get user profile using email
     [HttpGet("email/{email}")]
-    public async Task<IActionResult> GetUserByEmail(string email)
+    public async Task<IActionResult> GetUserByEmail(string paramEmail)
     {
         //find user by email
-        string email = email.Trim().ToLower();
+        string email = paramEmail.Trim().ToLower();
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     
         //return 404 iif user does not exist
@@ -170,13 +170,13 @@ public class UsersController : Controller
             return NotFound();
         }
 
-        if (!IsPictureType(userCreateProfile.Picture))
+        if (!IsPictureType(userUpdateProfile.Picture))
         {
             return BadRequest("Picture must be in .jpg, .jpeg or .png format");
         }
 
         //only change if its not taken cause these are meant to be unique (ref: Data/DBManager.cs)
-        if (userUpdateProfile.username != null)
+        if (userUpdateProfile.Username != null)
         {
             string newUsername = userUpdateProfile.Username;
             bool usernameTaken = await _context.Users.AnyAsync(u => u.Username == newUsername);
@@ -195,7 +195,7 @@ public class UsersController : Controller
             {
                 return Conflict("This email address is taken already.");
             }
-            user.Email = email;
+            user.Email = newEmail;
         }
 
         //new name, address, phone
@@ -362,7 +362,7 @@ public class UsersController : Controller
             return true;
         }
         //get file type
-        string extension = Path.GetExtension(profilePicture.FileName).ToLower();
+        string extension = Path.GetExtension(profilepicture.FileName).ToLower();
         return AllowedPictureType.Contains(extension);
 
         //else it will return 400
@@ -383,10 +383,10 @@ public class UsersController : Controller
 
         //write the uploaded file to the folder
         //ref source: https://stackoverflow.com/questions/53857251/uploading-files-to-a-directory-with-an-asp-net-core-web-application-hosted-on-az
-        using var stream = new FileStream(path, FileMode.Create)
-        {
-            await profilePicture.CopyToAsync(stream);
-        }
+        using var stream = new FileStream(path, FileMode.Create);
+        //{
+        await profilePicture.CopyToAsync(stream);
+        //}
 
         return path;
     }

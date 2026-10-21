@@ -1,7 +1,7 @@
 ﻿
 using BankApi.Models;
 using Microsoft.EntityFrameworkCore;
-namespace BankAPI.Data
+namespace BankApi.Data
 {
 
     public class DBManager : DbContext

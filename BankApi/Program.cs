@@ -1,4 +1,4 @@
-using BankAPI.Data;
+using BankApi.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +15,15 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+//create dbs and apply seed data automatically on first run
+//ref source: https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<DBManager>();
+    db.Database.Migrate();
+}
+
 app.UseRouting();
 
 app.UseAuthorization();

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BankApi.Models;
-using BankAPI.Data;
+using BankApi.Data;
 
 public class AccountsController : Controller
 {

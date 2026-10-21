@@ -1,0 +1,72 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+.bank-nav {
+    background-color: #123c69;
+}
+
+.profile-picture {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #dee2e6;
+}
+
+.profile-picture-sm {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.money-in {
+    color: #146c43;
+}
+
+.money-out {
+    color: #b02a37;
+}
+
+.table th a {
+    color: inherit;
+    text-decoration: none;
+}
+
+    .table th a:hover {
+        text-decoration: underline;
+    }
+
+.balance {
+    font-size: 1.6rem;
+    font-weight: 600;
+}

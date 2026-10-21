@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BankWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bank-nav mb-4">
+            <div class="container">
+                <a class="navbar-brand fw-semibold" asp-controller="Home" asp-action="Index">BankWeb</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                        aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav me-auto">
+                        @if (User.IsInRole("Customer"))
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="Accounts" asp-action="Index">My accounts</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Transfer" asp-action="Index">Transfer</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Profile" asp-action="Index">Profile</a></li>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index">Dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Users">Users</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Transactions">Transactions</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="AuditTrail">Audit trail</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Profile" asp-action="Index">My profile</a></li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav">
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item">
+                                <span class="navbar-text me-3">
+                                    @User.FindFirst("FullName")?.Value
+                                    <span class="badge bg-light text-dark ms-1">@(User.IsInRole("Admin") ? "Administrator" : "Customer")</span>
+                                </span>
+                            </li>
+                            <li class="nav-item">
+                                <form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-outline-light btn-sm mt-1">Sign out</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Login">Sign in</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Register">Register</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <partial name="_Alerts" />
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - BankWeb - Distributed Computing Assignment 2
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

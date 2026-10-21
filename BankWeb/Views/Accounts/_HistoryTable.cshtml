@@ -1,0 +1,42 @@
+﻿@model TransactionHistoryViewModel
+@{
+    var f = Model.Filter;
+    string Arrow(string field) => f.SortBy == field ? (f.SortDir == "asc" ? " ▲" : " ▼") : "";
+}
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+@if (Model.Account != null)
+{
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th><button type="button" class="btn btn-link p-0 fw-bold" onclick="sortHistory('date')">Date@(Arrow("date"))</button></th>
+                    <th><button type="button" class="btn btn-link p-0 fw-bold" onclick="sortHistory('type')">Type@(Arrow("type"))</button></th>
+                    <th>Description</th>
+                    <th>Other account</th>
+                    <th class="text-end"><button type="button" class="btn btn-link p-0 fw-bold" onclick="sortHistory('amount')">Amount@(Arrow("amount"))</button></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in Model.Result.Items)
+                {
+                    <tr>
+                        <td>@t.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@t.Type</td>
+                        <td>@t.Description</td>
+                        <td>@(t.RelatedAccountNumber ?? "-")</td>
+                        <td class="text-end @(t.IsCredit ? "money-in" : "money-out")">@(t.IsCredit ? "+" : "-")@t.Amount.ToString("C")</td>
+                    </tr>
+                }
+                @if (Model.Result.Items.Count == 0)
+                {
+                    <tr><td colspan="5" class="text-muted text-center">No transactions found.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <partial name="_Pager" model="new PagerModel { Page = Model.Result.Page, TotalPages = Model.Result.TotalPages, TotalCount = Model.Result.TotalCount }" />
+}

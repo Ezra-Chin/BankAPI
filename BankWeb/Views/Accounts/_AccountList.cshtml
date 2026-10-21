@@ -1,0 +1,34 @@
+﻿@model List<AccountModel>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+else if (Model.Count == 0)
+{
+    <p class="text-muted">You have no accounts yet.</p>
+}
+<div class="row g-3">
+    @foreach (var account in Model)
+    {
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 @(account.IsActive ? "" : "border-secondary opacity-75")">
+                <div class="card-body">
+                    <h2 class="h6 text-muted mb-1">@account.AccountName</h2>
+                    <div class="small mb-2">Account number <strong>@account.AccountNumber</strong></div>
+                    <div class="balance">@account.Balance.ToString("C")</div>
+                    @if (!account.IsActive)
+                    {
+                        <span class="badge bg-secondary">Deactivated</span>
+                    }
+                </div>
+                <div class="card-footer bg-transparent">
+                    <a asp-controller="Accounts" asp-action="History" asp-route-id="@account.AccountNumber" class="btn btn-sm btn-outline-primary">Transaction history</a>
+                    @if (account.IsActive)
+                    {
+                        <a asp-controller="Transfer" asp-action="Index" asp-route-from="@account.AccountNumber" class="btn btn-sm btn-link">Transfer from</a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

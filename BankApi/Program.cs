@@ -40,7 +40,7 @@ using (var scope = app.Services.CreateScope())
 app.UseStatusCodePages(async statusContext =>
 {
     var response = statusContext.HttpContext.Response;
-    await response.WriteAsJsonAsync(new ApiError("NOT_FOUND", "The requested URL doesnt exists"));
+    await response.WriteAsJsonAsync(new ApiError( response.StatusCode == 404 ? "NOT_FOUND" : "HTTP_" + response.StatusCode , "The requested URL doesnt exists"));
 });
 
 app.UseRouting();

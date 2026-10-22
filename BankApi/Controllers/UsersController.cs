@@ -51,8 +51,8 @@ public class UsersController : Controller
 
         try
         {
-            MailAddress address = new MailAddress(userCreateProfile.Email);
-            isValidEmail = address.Address == userCreateProfile.Email;
+            MailAddress address = new MailAddress(email);
+            isValidEmail = address.Address == email;
         }
         catch (FormatException)
         {
@@ -115,6 +115,7 @@ public class UsersController : Controller
     public async Task<IActionResult> GetUserByUsername(string username)
     {
         //find user by username
+        username = username.Trim().ToLower();
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
     
         //return 404 iif user does not exist
@@ -167,7 +168,7 @@ public class UsersController : Controller
         //only change if its not taken cause these are meant to be unique (ref: Data/DBManager.cs)
         if (userUpdateProfile.Username != null)
         {
-            string newUsername = userUpdateProfile.Username;
+            string newUsername = userUpdateProfile.Username.Trim().ToLower() ;
             bool usernameTaken = await _context.Users.AnyAsync(u => u.Username == newUsername && u.Id != user.Id);
             if (usernameTaken)
             {
@@ -178,7 +179,7 @@ public class UsersController : Controller
 
         if (userUpdateProfile.Email != null)
         {
-            string newEmail = userUpdateProfile.Email;
+            string newEmail = userUpdateProfile.Email.Trim().ToLower();
             bool emailTaken = await _context.Users.AnyAsync(u => u.Email == newEmail && u.Id != user.Id);
             if (emailTaken)
             {
@@ -245,7 +246,7 @@ public class UsersController : Controller
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] UserLogin userLogin)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == userLogin.Username);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == userLogin.Username.Trim().ToLower());
 
         //hash the pw and use the same salt when user signed up
         if (user != null)

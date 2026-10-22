@@ -23,36 +23,6 @@ public class UsersController : Controller
         _context = context;
     }
 
-    // GET: USERS
-    public async Task<IActionResult> Index()    
-    {
-        return View(await _context.Users.ToListAsync());
-    }
-
-    // GET: USERS/Details/5
-    public async Task<IActionResult> Details(int id)
-    {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var user = await _context.Users
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (user == null)
-        {
-            return NotFound();
-        }
-
-        return View(user);
-    }
-
-    // GET: USERS/Create
-    public IActionResult Create()
-    {
-        return View();
-    }
-
     // POST api/users
     //register new user
     [HttpPost]
@@ -65,7 +35,7 @@ public class UsersController : Controller
         //to be changed for #7 ref: WebAPI slide 31
         if (!IsPictureType(userCreateProfile.Picture))
         {
-            return BadRequest("Picture must be in .jpg, .jpeg or .png format");
+            return BadRequest(new ApiError("PICTURE_FORMAT","Picture must be in .jpg, .jpeg or .png format"));
         }
 
         bool usernameExists = await _context.Users.AnyAsync(u => u.Username == userCreateProfile.Username);
@@ -131,7 +101,7 @@ public class UsersController : Controller
         //return 404 iif user does not exist
         if (user == null)
         {
-            return NotFound();
+            return NotFound(new ApiError("USER_NOT_FOUND", "User does not exists"));
         }
 
         return Ok(uResponse(user));
@@ -149,7 +119,7 @@ public class UsersController : Controller
         //return 404 iif user does not exist
         if (user == null)
         {
-            return NotFound();
+            return NotFound(new ApiError("USER_NOT_FOUND", "User does not exist"));
         }
 
         return Ok(uResponse(user));
@@ -167,12 +137,12 @@ public class UsersController : Controller
         //return 404 iif user does not exist
         if (user == null)
         {
-            return NotFound();
+            return NotFound(new ApiError("USER_NOT_FOUND", "User does not exist"));
         }
 
         if (!IsPictureType(userUpdateProfile.Picture))
         {
-            return BadRequest("Picture must be in .jpg, .jpeg or .png format");
+            return BadRequest(new ApiError("PICTURE_FORMAT", "Picture must be in .jpg, .jpeg or .png format"));
         }
 
         //only change if its not taken cause these are meant to be unique (ref: Data/DBManager.cs)
@@ -193,7 +163,7 @@ public class UsersController : Controller
             bool emailTaken = await _context.Users.AnyAsync(u => u.Email == newEmail && u.Id != user.Id);
             if (emailTaken)
             {
-                return Conflict("This email address is taken already.");
+                return Conflict(new ApiError("EMAIL_TAKEN", "This email address is taken already."));
             }
             user.Email = newEmail;
         }

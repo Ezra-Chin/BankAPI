@@ -23,11 +23,18 @@ namespace BankApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("AccountName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("AccountNumber")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Balance")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
@@ -49,240 +56,300 @@ namespace BankApi.Migrations
                         new
                         {
                             Id = 1,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1001",
                             Balance = 59216m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1002",
                             Balance = 18115m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 2
                         },
                         new
                         {
                             Id = 3,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1003",
                             Balance = 20098m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 3
                         },
                         new
                         {
                             Id = 4,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1004",
                             Balance = 29729m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 4
                         },
                         new
                         {
                             Id = 5,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1005",
                             Balance = 28609m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 5
                         },
                         new
                         {
                             Id = 6,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1006",
                             Balance = 58392m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 6
                         },
                         new
                         {
                             Id = 7,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1007",
                             Balance = 607m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 7
                         },
                         new
                         {
                             Id = 8,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1008",
                             Balance = 39720m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 8
                         },
                         new
                         {
                             Id = 9,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1009",
                             Balance = 31703m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 9
                         },
                         new
                         {
                             Id = 10,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1010",
                             Balance = 12446m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 10
                         },
                         new
                         {
                             Id = 11,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1011",
                             Balance = 15790m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 11
                         },
                         new
                         {
                             Id = 12,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1012",
                             Balance = 13310m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 12
                         },
                         new
                         {
                             Id = 13,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1013",
                             Balance = 1567m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 13
                         },
                         new
                         {
                             Id = 14,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1014",
                             Balance = 1447m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 14
                         },
                         new
                         {
                             Id = 15,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1015",
                             Balance = 41971m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 15
                         },
                         new
                         {
                             Id = 16,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1016",
                             Balance = 34705m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 16
                         },
                         new
                         {
                             Id = 17,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1017",
                             Balance = 12067m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 17
                         },
                         new
                         {
                             Id = 18,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1018",
                             Balance = 13222m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 18
                         },
                         new
                         {
                             Id = 19,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1019",
                             Balance = 21522m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 19
                         },
                         new
                         {
                             Id = 20,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1020",
                             Balance = 8746m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 20
                         },
                         new
                         {
                             Id = 21,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1021",
                             Balance = 4740m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 1
                         },
                         new
                         {
                             Id = 22,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1022",
                             Balance = 51984m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 2
                         },
                         new
                         {
                             Id = 23,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1023",
                             Balance = 10096m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 3
                         },
                         new
                         {
                             Id = 24,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1024",
                             Balance = 7587m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 4
                         },
                         new
                         {
                             Id = 25,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1025",
                             Balance = 40420m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 5
                         },
                         new
                         {
                             Id = 26,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1026",
                             Balance = 11590m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 6
                         },
                         new
                         {
                             Id = 27,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1027",
                             Balance = 9009m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 7
                         },
                         new
                         {
                             Id = 28,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1028",
                             Balance = 8584m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 8
                         },
                         new
                         {
                             Id = 29,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1029",
                             Balance = 14896m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 9
                         },
                         new
                         {
                             Id = 30,
+                            AccountName = "Everyday Account",
                             AccountNumber = "ACCOUNT1030",
                             Balance = 35291m,
+                            CreatedAt = new DateTime(2026, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             UserId = 10
                         });
@@ -303,7 +370,11 @@ namespace BankApi.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("RelatedAccountId")
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("RelatedAccountId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Type")
@@ -325,7 +396,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 1545m,
                             CreatedAt = new DateTime(2026, 1, 1, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -334,7 +405,7 @@ namespace BankApi.Migrations
                             AccountId = 2,
                             Amount = 1322m,
                             CreatedAt = new DateTime(2026, 1, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 2,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -343,7 +414,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 3282m,
                             CreatedAt = new DateTime(2026, 1, 1, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -352,7 +423,7 @@ namespace BankApi.Migrations
                             AccountId = 4,
                             Amount = 4431m,
                             CreatedAt = new DateTime(2026, 1, 1, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 4,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -361,7 +432,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 6814m,
                             CreatedAt = new DateTime(2026, 1, 1, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -370,7 +441,7 @@ namespace BankApi.Migrations
                             AccountId = 6,
                             Amount = 1970m,
                             CreatedAt = new DateTime(2026, 1, 1, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 6,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -379,7 +450,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 8916m,
                             CreatedAt = new DateTime(2026, 1, 1, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -388,7 +459,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 502m,
                             CreatedAt = new DateTime(2026, 1, 1, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -397,7 +468,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 867m,
                             CreatedAt = new DateTime(2026, 1, 1, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -406,7 +477,7 @@ namespace BankApi.Migrations
                             AccountId = 10,
                             Amount = 8582m,
                             CreatedAt = new DateTime(2026, 1, 1, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 10,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -415,7 +486,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 4579m,
                             CreatedAt = new DateTime(2026, 1, 1, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -424,7 +495,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 6886m,
                             CreatedAt = new DateTime(2026, 1, 1, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -433,7 +504,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 2922m,
                             CreatedAt = new DateTime(2026, 1, 1, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -442,7 +513,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 8811m,
                             CreatedAt = new DateTime(2026, 1, 1, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -451,7 +522,7 @@ namespace BankApi.Migrations
                             AccountId = 15,
                             Amount = 3972m,
                             CreatedAt = new DateTime(2026, 1, 1, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 15,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -460,7 +531,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 7625m,
                             CreatedAt = new DateTime(2026, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -469,7 +540,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 9296m,
                             CreatedAt = new DateTime(2026, 1, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -478,7 +549,7 @@ namespace BankApi.Migrations
                             AccountId = 18,
                             Amount = 9914m,
                             CreatedAt = new DateTime(2026, 1, 2, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 18,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -487,7 +558,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 4941m,
                             CreatedAt = new DateTime(2026, 1, 2, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -496,7 +567,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 3681m,
                             CreatedAt = new DateTime(2026, 1, 2, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -505,7 +576,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 5788m,
                             CreatedAt = new DateTime(2026, 1, 2, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -514,7 +585,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 279m,
                             CreatedAt = new DateTime(2026, 1, 2, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -523,7 +594,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 1456m,
                             CreatedAt = new DateTime(2026, 1, 2, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -532,7 +603,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 3939m,
                             CreatedAt = new DateTime(2026, 1, 2, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -541,7 +612,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 2364m,
                             CreatedAt = new DateTime(2026, 1, 2, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -550,7 +621,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 2145m,
                             CreatedAt = new DateTime(2026, 1, 2, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -559,7 +630,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 4604m,
                             CreatedAt = new DateTime(2026, 1, 2, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -568,7 +639,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 6228m,
                             CreatedAt = new DateTime(2026, 1, 2, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -577,7 +648,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 9601m,
                             CreatedAt = new DateTime(2026, 1, 2, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -586,7 +657,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 6091m,
                             CreatedAt = new DateTime(2026, 1, 2, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -595,7 +666,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 52m,
                             CreatedAt = new DateTime(2026, 1, 2, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -604,7 +675,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 7893m,
                             CreatedAt = new DateTime(2026, 1, 2, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -613,7 +684,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 2402m,
                             CreatedAt = new DateTime(2026, 1, 2, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -622,7 +693,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 4229m,
                             CreatedAt = new DateTime(2026, 1, 2, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -631,7 +702,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 3548m,
                             CreatedAt = new DateTime(2026, 1, 2, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -640,7 +711,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 9004m,
                             CreatedAt = new DateTime(2026, 1, 2, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -649,7 +720,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 7503m,
                             CreatedAt = new DateTime(2026, 1, 2, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -658,7 +729,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 854m,
                             CreatedAt = new DateTime(2026, 1, 2, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -667,7 +738,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 1276m,
                             CreatedAt = new DateTime(2026, 1, 2, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -676,7 +747,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 2076m,
                             CreatedAt = new DateTime(2026, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -685,7 +756,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 2697m,
                             CreatedAt = new DateTime(2026, 1, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -694,7 +765,7 @@ namespace BankApi.Migrations
                             AccountId = 15,
                             Amount = 5881m,
                             CreatedAt = new DateTime(2026, 1, 3, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 15,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -703,7 +774,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 9143m,
                             CreatedAt = new DateTime(2026, 1, 3, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -712,7 +783,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 2093m,
                             CreatedAt = new DateTime(2026, 1, 3, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -721,7 +792,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 8613m,
                             CreatedAt = new DateTime(2026, 1, 3, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -730,7 +801,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 6155m,
                             CreatedAt = new DateTime(2026, 1, 3, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -739,7 +810,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 9506m,
                             CreatedAt = new DateTime(2026, 1, 3, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -748,7 +819,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 4727m,
                             CreatedAt = new DateTime(2026, 1, 3, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -757,7 +828,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 2749m,
                             CreatedAt = new DateTime(2026, 1, 3, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -766,7 +837,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 1607m,
                             CreatedAt = new DateTime(2026, 1, 3, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -775,7 +846,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 6199m,
                             CreatedAt = new DateTime(2026, 1, 3, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -784,7 +855,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 8961m,
                             CreatedAt = new DateTime(2026, 1, 3, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -793,7 +864,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 9347m,
                             CreatedAt = new DateTime(2026, 1, 3, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -802,7 +873,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 6029m,
                             CreatedAt = new DateTime(2026, 1, 3, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -811,7 +882,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 3984m,
                             CreatedAt = new DateTime(2026, 1, 3, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -820,7 +891,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 4659m,
                             CreatedAt = new DateTime(2026, 1, 3, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -829,7 +900,7 @@ namespace BankApi.Migrations
                             AccountId = 6,
                             Amount = 2460m,
                             CreatedAt = new DateTime(2026, 1, 3, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 6,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -838,7 +909,7 @@ namespace BankApi.Migrations
                             AccountId = 6,
                             Amount = 7776m,
                             CreatedAt = new DateTime(2026, 1, 3, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 6,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -847,7 +918,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 5096m,
                             CreatedAt = new DateTime(2026, 1, 3, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -856,7 +927,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 3339m,
                             CreatedAt = new DateTime(2026, 1, 3, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -865,7 +936,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 7918m,
                             CreatedAt = new DateTime(2026, 1, 3, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -874,7 +945,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 958m,
                             CreatedAt = new DateTime(2026, 1, 3, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -883,7 +954,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 5378m,
                             CreatedAt = new DateTime(2026, 1, 3, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -892,7 +963,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 4553m,
                             CreatedAt = new DateTime(2026, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -901,7 +972,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 3741m,
                             CreatedAt = new DateTime(2026, 1, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -910,7 +981,7 @@ namespace BankApi.Migrations
                             AccountId = 10,
                             Amount = 872m,
                             CreatedAt = new DateTime(2026, 1, 4, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 10,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -919,7 +990,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 3695m,
                             CreatedAt = new DateTime(2026, 1, 4, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -928,7 +999,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 7213m,
                             CreatedAt = new DateTime(2026, 1, 4, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -937,7 +1008,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 4620m,
                             CreatedAt = new DateTime(2026, 1, 4, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -946,7 +1017,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 8395m,
                             CreatedAt = new DateTime(2026, 1, 4, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -955,7 +1026,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 6384m,
                             CreatedAt = new DateTime(2026, 1, 4, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -964,7 +1035,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 2505m,
                             CreatedAt = new DateTime(2026, 1, 4, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -973,7 +1044,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 7116m,
                             CreatedAt = new DateTime(2026, 1, 4, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -982,7 +1053,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 1183m,
                             CreatedAt = new DateTime(2026, 1, 4, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -991,7 +1062,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 3785m,
                             CreatedAt = new DateTime(2026, 1, 4, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1000,7 +1071,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 1728m,
                             CreatedAt = new DateTime(2026, 1, 4, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1009,7 +1080,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 8268m,
                             CreatedAt = new DateTime(2026, 1, 4, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1018,7 +1089,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 2114m,
                             CreatedAt = new DateTime(2026, 1, 4, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1027,7 +1098,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 8374m,
                             CreatedAt = new DateTime(2026, 1, 4, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1036,7 +1107,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 2793m,
                             CreatedAt = new DateTime(2026, 1, 4, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1045,7 +1116,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 8811m,
                             CreatedAt = new DateTime(2026, 1, 4, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1054,7 +1125,7 @@ namespace BankApi.Migrations
                             AccountId = 18,
                             Amount = 4360m,
                             CreatedAt = new DateTime(2026, 1, 4, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 18,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1063,7 +1134,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 5713m,
                             CreatedAt = new DateTime(2026, 1, 4, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1072,7 +1143,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 964m,
                             CreatedAt = new DateTime(2026, 1, 4, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1081,7 +1152,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 7161m,
                             CreatedAt = new DateTime(2026, 1, 4, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1090,7 +1161,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 4385m,
                             CreatedAt = new DateTime(2026, 1, 4, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1099,7 +1170,7 @@ namespace BankApi.Migrations
                             AccountId = 4,
                             Amount = 3203m,
                             CreatedAt = new DateTime(2026, 1, 4, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 4,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1108,7 +1179,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 8684m,
                             CreatedAt = new DateTime(2026, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1117,7 +1188,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 6343m,
                             CreatedAt = new DateTime(2026, 1, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1126,7 +1197,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 9484m,
                             CreatedAt = new DateTime(2026, 1, 5, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1135,7 +1206,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 3926m,
                             CreatedAt = new DateTime(2026, 1, 5, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1144,7 +1215,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 2066m,
                             CreatedAt = new DateTime(2026, 1, 5, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1153,7 +1224,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 6803m,
                             CreatedAt = new DateTime(2026, 1, 5, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1162,7 +1233,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 7523m,
                             CreatedAt = new DateTime(2026, 1, 5, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1171,7 +1242,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 3714m,
                             CreatedAt = new DateTime(2026, 1, 5, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1180,7 +1251,7 @@ namespace BankApi.Migrations
                             AccountId = 2,
                             Amount = 9509m,
                             CreatedAt = new DateTime(2026, 1, 5, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 2,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1189,7 +1260,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 6242m,
                             CreatedAt = new DateTime(2026, 1, 5, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1198,7 +1269,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 7160m,
                             CreatedAt = new DateTime(2026, 1, 5, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1207,7 +1278,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 3091m,
                             CreatedAt = new DateTime(2026, 1, 5, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1216,7 +1287,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 6146m,
                             CreatedAt = new DateTime(2026, 1, 5, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1225,7 +1296,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 4425m,
                             CreatedAt = new DateTime(2026, 1, 5, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1234,7 +1305,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 7972m,
                             CreatedAt = new DateTime(2026, 1, 5, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1243,7 +1314,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 1029m,
                             CreatedAt = new DateTime(2026, 1, 5, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1252,7 +1323,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 6512m,
                             CreatedAt = new DateTime(2026, 1, 5, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1261,7 +1332,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 1510m,
                             CreatedAt = new DateTime(2026, 1, 5, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1270,7 +1341,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 1590m,
                             CreatedAt = new DateTime(2026, 1, 5, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1279,7 +1350,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 9161m,
                             CreatedAt = new DateTime(2026, 1, 5, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1288,7 +1359,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 9242m,
                             CreatedAt = new DateTime(2026, 1, 5, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1297,7 +1368,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 136m,
                             CreatedAt = new DateTime(2026, 1, 5, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1306,7 +1377,7 @@ namespace BankApi.Migrations
                             AccountId = 15,
                             Amount = 3263m,
                             CreatedAt = new DateTime(2026, 1, 5, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 15,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1315,7 +1386,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 5449m,
                             CreatedAt = new DateTime(2026, 1, 5, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1324,7 +1395,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 5850m,
                             CreatedAt = new DateTime(2026, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1333,7 +1404,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 5692m,
                             CreatedAt = new DateTime(2026, 1, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1342,7 +1413,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 1065m,
                             CreatedAt = new DateTime(2026, 1, 6, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1351,7 +1422,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 6981m,
                             CreatedAt = new DateTime(2026, 1, 6, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1360,7 +1431,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 3275m,
                             CreatedAt = new DateTime(2026, 1, 6, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1369,7 +1440,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 6556m,
                             CreatedAt = new DateTime(2026, 1, 6, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1378,7 +1449,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 4044m,
                             CreatedAt = new DateTime(2026, 1, 6, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1387,7 +1458,7 @@ namespace BankApi.Migrations
                             AccountId = 4,
                             Amount = 4571m,
                             CreatedAt = new DateTime(2026, 1, 6, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 4,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1396,7 +1467,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 6983m,
                             CreatedAt = new DateTime(2026, 1, 6, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1405,7 +1476,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 4690m,
                             CreatedAt = new DateTime(2026, 1, 6, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1414,7 +1485,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 7914m,
                             CreatedAt = new DateTime(2026, 1, 6, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1423,7 +1494,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 2603m,
                             CreatedAt = new DateTime(2026, 1, 6, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1432,7 +1503,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 7103m,
                             CreatedAt = new DateTime(2026, 1, 6, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1441,7 +1512,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 2547m,
                             CreatedAt = new DateTime(2026, 1, 6, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1450,7 +1521,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 9480m,
                             CreatedAt = new DateTime(2026, 1, 6, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1459,7 +1530,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 3724m,
                             CreatedAt = new DateTime(2026, 1, 6, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1468,7 +1539,7 @@ namespace BankApi.Migrations
                             AccountId = 4,
                             Amount = 831m,
                             CreatedAt = new DateTime(2026, 1, 6, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 4,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1477,7 +1548,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 7088m,
                             CreatedAt = new DateTime(2026, 1, 6, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1486,7 +1557,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 237m,
                             CreatedAt = new DateTime(2026, 1, 6, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1495,7 +1566,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 6807m,
                             CreatedAt = new DateTime(2026, 1, 6, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1504,7 +1575,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 12m,
                             CreatedAt = new DateTime(2026, 1, 6, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1513,7 +1584,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 3726m,
                             CreatedAt = new DateTime(2026, 1, 6, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1522,7 +1593,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 9492m,
                             CreatedAt = new DateTime(2026, 1, 6, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1531,7 +1602,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 1348m,
                             CreatedAt = new DateTime(2026, 1, 6, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1540,7 +1611,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 5919m,
                             CreatedAt = new DateTime(2026, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1549,7 +1620,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 2847m,
                             CreatedAt = new DateTime(2026, 1, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1558,7 +1629,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 9464m,
                             CreatedAt = new DateTime(2026, 1, 7, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1567,7 +1638,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 9166m,
                             CreatedAt = new DateTime(2026, 1, 7, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1576,7 +1647,7 @@ namespace BankApi.Migrations
                             AccountId = 4,
                             Amount = 8656m,
                             CreatedAt = new DateTime(2026, 1, 7, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 4,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1585,7 +1656,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 3252m,
                             CreatedAt = new DateTime(2026, 1, 7, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1594,7 +1665,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 4657m,
                             CreatedAt = new DateTime(2026, 1, 7, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1603,7 +1674,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 1350m,
                             CreatedAt = new DateTime(2026, 1, 7, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1612,7 +1683,7 @@ namespace BankApi.Migrations
                             AccountId = 6,
                             Amount = 7621m,
                             CreatedAt = new DateTime(2026, 1, 7, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 6,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1621,7 +1692,7 @@ namespace BankApi.Migrations
                             AccountId = 10,
                             Amount = 4856m,
                             CreatedAt = new DateTime(2026, 1, 7, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 10,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1630,7 +1701,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 1116m,
                             CreatedAt = new DateTime(2026, 1, 7, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1639,7 +1710,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 1872m,
                             CreatedAt = new DateTime(2026, 1, 7, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1648,7 +1719,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 4802m,
                             CreatedAt = new DateTime(2026, 1, 7, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1657,7 +1728,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 5013m,
                             CreatedAt = new DateTime(2026, 1, 7, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1666,7 +1737,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 6911m,
                             CreatedAt = new DateTime(2026, 1, 7, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1675,7 +1746,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 9663m,
                             CreatedAt = new DateTime(2026, 1, 7, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1684,7 +1755,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 9008m,
                             CreatedAt = new DateTime(2026, 1, 7, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1693,7 +1764,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 5628m,
                             CreatedAt = new DateTime(2026, 1, 7, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1702,7 +1773,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 8423m,
                             CreatedAt = new DateTime(2026, 1, 7, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1711,7 +1782,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 7149m,
                             CreatedAt = new DateTime(2026, 1, 7, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1720,7 +1791,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 9717m,
                             CreatedAt = new DateTime(2026, 1, 7, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1729,7 +1800,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 4807m,
                             CreatedAt = new DateTime(2026, 1, 7, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1738,7 +1809,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 3814m,
                             CreatedAt = new DateTime(2026, 1, 7, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1747,7 +1818,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 9749m,
                             CreatedAt = new DateTime(2026, 1, 7, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1756,7 +1827,7 @@ namespace BankApi.Migrations
                             AccountId = 15,
                             Amount = 8182m,
                             CreatedAt = new DateTime(2026, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 15,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1765,7 +1836,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 1749m,
                             CreatedAt = new DateTime(2026, 1, 8, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1774,7 +1845,7 @@ namespace BankApi.Migrations
                             AccountId = 6,
                             Amount = 9223m,
                             CreatedAt = new DateTime(2026, 1, 8, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 6,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1783,7 +1854,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 4963m,
                             CreatedAt = new DateTime(2026, 1, 8, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1792,7 +1863,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 7880m,
                             CreatedAt = new DateTime(2026, 1, 8, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1801,7 +1872,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 8099m,
                             CreatedAt = new DateTime(2026, 1, 8, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1810,7 +1881,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 954m,
                             CreatedAt = new DateTime(2026, 1, 8, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1819,7 +1890,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 6872m,
                             CreatedAt = new DateTime(2026, 1, 8, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1828,7 +1899,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 6412m,
                             CreatedAt = new DateTime(2026, 1, 8, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1837,7 +1908,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 8131m,
                             CreatedAt = new DateTime(2026, 1, 8, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1846,7 +1917,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 8583m,
                             CreatedAt = new DateTime(2026, 1, 8, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1855,7 +1926,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 3331m,
                             CreatedAt = new DateTime(2026, 1, 8, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1864,7 +1935,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 6201m,
                             CreatedAt = new DateTime(2026, 1, 8, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1873,7 +1944,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 7265m,
                             CreatedAt = new DateTime(2026, 1, 8, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1882,7 +1953,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 8631m,
                             CreatedAt = new DateTime(2026, 1, 8, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1891,7 +1962,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 1065m,
                             CreatedAt = new DateTime(2026, 1, 8, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1900,7 +1971,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 1593m,
                             CreatedAt = new DateTime(2026, 1, 8, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1909,7 +1980,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 3068m,
                             CreatedAt = new DateTime(2026, 1, 8, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1918,7 +1989,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 2821m,
                             CreatedAt = new DateTime(2026, 1, 8, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1927,7 +1998,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 240m,
                             CreatedAt = new DateTime(2026, 1, 8, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1936,7 +2007,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 8922m,
                             CreatedAt = new DateTime(2026, 1, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1945,7 +2016,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 2429m,
                             CreatedAt = new DateTime(2026, 1, 8, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1954,7 +2025,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 192m,
                             CreatedAt = new DateTime(2026, 1, 8, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1963,7 +2034,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 5754m,
                             CreatedAt = new DateTime(2026, 1, 8, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1972,7 +2043,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 6458m,
                             CreatedAt = new DateTime(2026, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -1981,7 +2052,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 4905m,
                             CreatedAt = new DateTime(2026, 1, 9, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1990,7 +2061,7 @@ namespace BankApi.Migrations
                             AccountId = 2,
                             Amount = 3962m,
                             CreatedAt = new DateTime(2026, 1, 9, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 2,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -1999,7 +2070,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 212m,
                             CreatedAt = new DateTime(2026, 1, 9, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2008,7 +2079,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 4930m,
                             CreatedAt = new DateTime(2026, 1, 9, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2017,7 +2088,7 @@ namespace BankApi.Migrations
                             AccountId = 2,
                             Amount = 7002m,
                             CreatedAt = new DateTime(2026, 1, 9, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 2,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2026,7 +2097,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 2697m,
                             CreatedAt = new DateTime(2026, 1, 9, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2035,7 +2106,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 7816m,
                             CreatedAt = new DateTime(2026, 1, 9, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2044,7 +2115,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 5170m,
                             CreatedAt = new DateTime(2026, 1, 9, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2053,7 +2124,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 2192m,
                             CreatedAt = new DateTime(2026, 1, 9, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2062,7 +2133,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 4540m,
                             CreatedAt = new DateTime(2026, 1, 9, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2071,7 +2142,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 6590m,
                             CreatedAt = new DateTime(2026, 1, 9, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2080,7 +2151,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 1080m,
                             CreatedAt = new DateTime(2026, 1, 9, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2089,7 +2160,7 @@ namespace BankApi.Migrations
                             AccountId = 10,
                             Amount = 3828m,
                             CreatedAt = new DateTime(2026, 1, 9, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 10,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2098,7 +2169,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 7146m,
                             CreatedAt = new DateTime(2026, 1, 9, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2107,7 +2178,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 1965m,
                             CreatedAt = new DateTime(2026, 1, 9, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2116,7 +2187,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 6135m,
                             CreatedAt = new DateTime(2026, 1, 9, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2125,7 +2196,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 1916m,
                             CreatedAt = new DateTime(2026, 1, 9, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2134,7 +2205,7 @@ namespace BankApi.Migrations
                             AccountId = 18,
                             Amount = 5418m,
                             CreatedAt = new DateTime(2026, 1, 9, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 18,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2143,7 +2214,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 2902m,
                             CreatedAt = new DateTime(2026, 1, 9, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2152,7 +2223,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 2156m,
                             CreatedAt = new DateTime(2026, 1, 9, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2161,7 +2232,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 2819m,
                             CreatedAt = new DateTime(2026, 1, 9, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2170,7 +2241,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 6335m,
                             CreatedAt = new DateTime(2026, 1, 9, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2179,7 +2250,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 5338m,
                             CreatedAt = new DateTime(2026, 1, 9, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2188,7 +2259,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 3067m,
                             CreatedAt = new DateTime(2026, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2197,7 +2268,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 1376m,
                             CreatedAt = new DateTime(2026, 1, 10, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2206,7 +2277,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 2288m,
                             CreatedAt = new DateTime(2026, 1, 10, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2215,7 +2286,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 7528m,
                             CreatedAt = new DateTime(2026, 1, 10, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2224,7 +2295,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 8328m,
                             CreatedAt = new DateTime(2026, 1, 10, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2233,7 +2304,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 7879m,
                             CreatedAt = new DateTime(2026, 1, 10, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2242,7 +2313,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 9777m,
                             CreatedAt = new DateTime(2026, 1, 10, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2251,7 +2322,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 1049m,
                             CreatedAt = new DateTime(2026, 1, 10, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2260,7 +2331,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 5506m,
                             CreatedAt = new DateTime(2026, 1, 10, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2269,7 +2340,7 @@ namespace BankApi.Migrations
                             AccountId = 10,
                             Amount = 3846m,
                             CreatedAt = new DateTime(2026, 1, 10, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 10,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2278,7 +2349,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 1952m,
                             CreatedAt = new DateTime(2026, 1, 10, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2287,7 +2358,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 1455m,
                             CreatedAt = new DateTime(2026, 1, 10, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2296,7 +2367,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 6246m,
                             CreatedAt = new DateTime(2026, 1, 10, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2305,7 +2376,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 5724m,
                             CreatedAt = new DateTime(2026, 1, 10, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2314,7 +2385,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 3326m,
                             CreatedAt = new DateTime(2026, 1, 10, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2323,7 +2394,7 @@ namespace BankApi.Migrations
                             AccountId = 18,
                             Amount = 6791m,
                             CreatedAt = new DateTime(2026, 1, 10, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 18,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2332,7 +2403,7 @@ namespace BankApi.Migrations
                             AccountId = 10,
                             Amount = 7937m,
                             CreatedAt = new DateTime(2026, 1, 10, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 10,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2341,7 +2412,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 955m,
                             CreatedAt = new DateTime(2026, 1, 10, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2350,7 +2421,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 4422m,
                             CreatedAt = new DateTime(2026, 1, 10, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2359,7 +2430,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 5192m,
                             CreatedAt = new DateTime(2026, 1, 10, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2368,7 +2439,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 6574m,
                             CreatedAt = new DateTime(2026, 1, 10, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2377,7 +2448,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 9552m,
                             CreatedAt = new DateTime(2026, 1, 10, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2386,7 +2457,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 443m,
                             CreatedAt = new DateTime(2026, 1, 10, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2395,7 +2466,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 8584m,
                             CreatedAt = new DateTime(2026, 1, 10, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2404,7 +2475,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 9996m,
                             CreatedAt = new DateTime(2026, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2413,7 +2484,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 1660m,
                             CreatedAt = new DateTime(2026, 1, 11, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2422,7 +2493,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 8786m,
                             CreatedAt = new DateTime(2026, 1, 11, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2431,7 +2502,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 21m,
                             CreatedAt = new DateTime(2026, 1, 11, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2440,7 +2511,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 2002m,
                             CreatedAt = new DateTime(2026, 1, 11, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2449,7 +2520,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 9505m,
                             CreatedAt = new DateTime(2026, 1, 11, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2458,7 +2529,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 7000m,
                             CreatedAt = new DateTime(2026, 1, 11, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2467,7 +2538,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 1639m,
                             CreatedAt = new DateTime(2026, 1, 11, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2476,7 +2547,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 8944m,
                             CreatedAt = new DateTime(2026, 1, 11, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2485,7 +2556,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 472m,
                             CreatedAt = new DateTime(2026, 1, 11, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2494,7 +2565,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 9260m,
                             CreatedAt = new DateTime(2026, 1, 11, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2503,7 +2574,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 46m,
                             CreatedAt = new DateTime(2026, 1, 11, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2512,7 +2583,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 199m,
                             CreatedAt = new DateTime(2026, 1, 11, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2521,7 +2592,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 152m,
                             CreatedAt = new DateTime(2026, 1, 11, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2530,7 +2601,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 6497m,
                             CreatedAt = new DateTime(2026, 1, 11, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2539,7 +2610,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 422m,
                             CreatedAt = new DateTime(2026, 1, 11, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2548,7 +2619,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 22m,
                             CreatedAt = new DateTime(2026, 1, 11, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2557,7 +2628,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 6956m,
                             CreatedAt = new DateTime(2026, 1, 11, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2566,7 +2637,7 @@ namespace BankApi.Migrations
                             AccountId = 2,
                             Amount = 8947m,
                             CreatedAt = new DateTime(2026, 1, 11, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 2,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2575,7 +2646,7 @@ namespace BankApi.Migrations
                             AccountId = 15,
                             Amount = 5392m,
                             CreatedAt = new DateTime(2026, 1, 11, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 15,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2584,7 +2655,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 8013m,
                             CreatedAt = new DateTime(2026, 1, 11, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2593,7 +2664,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 2245m,
                             CreatedAt = new DateTime(2026, 1, 11, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2602,7 +2673,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 360m,
                             CreatedAt = new DateTime(2026, 1, 11, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2611,7 +2682,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 3749m,
                             CreatedAt = new DateTime(2026, 1, 11, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2620,7 +2691,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 2534m,
                             CreatedAt = new DateTime(2026, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2629,7 +2700,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 1039m,
                             CreatedAt = new DateTime(2026, 1, 12, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2638,7 +2709,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 9637m,
                             CreatedAt = new DateTime(2026, 1, 12, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2647,7 +2718,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 4461m,
                             CreatedAt = new DateTime(2026, 1, 12, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2656,7 +2727,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 7760m,
                             CreatedAt = new DateTime(2026, 1, 12, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2665,7 +2736,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 6244m,
                             CreatedAt = new DateTime(2026, 1, 12, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2674,7 +2745,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 6594m,
                             CreatedAt = new DateTime(2026, 1, 12, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2683,7 +2754,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 357m,
                             CreatedAt = new DateTime(2026, 1, 12, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2692,7 +2763,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 4794m,
                             CreatedAt = new DateTime(2026, 1, 12, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2701,7 +2772,7 @@ namespace BankApi.Migrations
                             AccountId = 18,
                             Amount = 5987m,
                             CreatedAt = new DateTime(2026, 1, 12, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 18,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2710,7 +2781,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 4541m,
                             CreatedAt = new DateTime(2026, 1, 12, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2719,7 +2790,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 5588m,
                             CreatedAt = new DateTime(2026, 1, 12, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2728,7 +2799,7 @@ namespace BankApi.Migrations
                             AccountId = 15,
                             Amount = 5931m,
                             CreatedAt = new DateTime(2026, 1, 12, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 15,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2737,7 +2808,7 @@ namespace BankApi.Migrations
                             AccountId = 10,
                             Amount = 2323m,
                             CreatedAt = new DateTime(2026, 1, 12, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 10,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2746,7 +2817,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 7745m,
                             CreatedAt = new DateTime(2026, 1, 12, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2755,7 +2826,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 6938m,
                             CreatedAt = new DateTime(2026, 1, 12, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2764,7 +2835,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 8786m,
                             CreatedAt = new DateTime(2026, 1, 12, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2773,7 +2844,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 7466m,
                             CreatedAt = new DateTime(2026, 1, 12, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2782,7 +2853,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 4213m,
                             CreatedAt = new DateTime(2026, 1, 12, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2791,7 +2862,7 @@ namespace BankApi.Migrations
                             AccountId = 15,
                             Amount = 6574m,
                             CreatedAt = new DateTime(2026, 1, 12, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 15,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2800,7 +2871,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 6786m,
                             CreatedAt = new DateTime(2026, 1, 12, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2809,7 +2880,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 618m,
                             CreatedAt = new DateTime(2026, 1, 12, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2818,7 +2889,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 3817m,
                             CreatedAt = new DateTime(2026, 1, 12, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2827,7 +2898,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 3044m,
                             CreatedAt = new DateTime(2026, 1, 12, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2836,7 +2907,7 @@ namespace BankApi.Migrations
                             AccountId = 10,
                             Amount = 9357m,
                             CreatedAt = new DateTime(2026, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 10,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2845,7 +2916,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 5883m,
                             CreatedAt = new DateTime(2026, 1, 13, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2854,7 +2925,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 220m,
                             CreatedAt = new DateTime(2026, 1, 13, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2863,7 +2934,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 7364m,
                             CreatedAt = new DateTime(2026, 1, 13, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2872,7 +2943,7 @@ namespace BankApi.Migrations
                             AccountId = 18,
                             Amount = 4737m,
                             CreatedAt = new DateTime(2026, 1, 13, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 18,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2881,7 +2952,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 7103m,
                             CreatedAt = new DateTime(2026, 1, 13, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2890,7 +2961,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 16m,
                             CreatedAt = new DateTime(2026, 1, 13, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2899,7 +2970,7 @@ namespace BankApi.Migrations
                             AccountId = 6,
                             Amount = 2353m,
                             CreatedAt = new DateTime(2026, 1, 13, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 6,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2908,7 +2979,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 5712m,
                             CreatedAt = new DateTime(2026, 1, 13, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2917,7 +2988,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 3695m,
                             CreatedAt = new DateTime(2026, 1, 13, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2926,7 +2997,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 574m,
                             CreatedAt = new DateTime(2026, 1, 13, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2935,7 +3006,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 7696m,
                             CreatedAt = new DateTime(2026, 1, 13, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2944,7 +3015,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 5465m,
                             CreatedAt = new DateTime(2026, 1, 13, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2953,7 +3024,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 6151m,
                             CreatedAt = new DateTime(2026, 1, 13, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2962,7 +3033,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 1114m,
                             CreatedAt = new DateTime(2026, 1, 13, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2971,7 +3042,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 2524m,
                             CreatedAt = new DateTime(2026, 1, 13, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2980,7 +3051,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 5070m,
                             CreatedAt = new DateTime(2026, 1, 13, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -2989,7 +3060,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 5637m,
                             CreatedAt = new DateTime(2026, 1, 13, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -2998,7 +3069,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 1506m,
                             CreatedAt = new DateTime(2026, 1, 13, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3007,7 +3078,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 6957m,
                             CreatedAt = new DateTime(2026, 1, 13, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3016,7 +3087,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 4946m,
                             CreatedAt = new DateTime(2026, 1, 13, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3025,7 +3096,7 @@ namespace BankApi.Migrations
                             AccountId = 15,
                             Amount = 7471m,
                             CreatedAt = new DateTime(2026, 1, 13, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 15,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3034,7 +3105,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 2163m,
                             CreatedAt = new DateTime(2026, 1, 13, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3043,7 +3114,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 6243m,
                             CreatedAt = new DateTime(2026, 1, 13, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3052,7 +3123,7 @@ namespace BankApi.Migrations
                             AccountId = 10,
                             Amount = 2679m,
                             CreatedAt = new DateTime(2026, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 10,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3061,7 +3132,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 3294m,
                             CreatedAt = new DateTime(2026, 1, 14, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3070,7 +3141,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 5646m,
                             CreatedAt = new DateTime(2026, 1, 14, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3079,7 +3150,7 @@ namespace BankApi.Migrations
                             AccountId = 4,
                             Amount = 794m,
                             CreatedAt = new DateTime(2026, 1, 14, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 4,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3088,7 +3159,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 1518m,
                             CreatedAt = new DateTime(2026, 1, 14, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3097,7 +3168,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 2845m,
                             CreatedAt = new DateTime(2026, 1, 14, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3106,7 +3177,7 @@ namespace BankApi.Migrations
                             AccountId = 4,
                             Amount = 4139m,
                             CreatedAt = new DateTime(2026, 1, 14, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 4,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3115,7 +3186,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 4110m,
                             CreatedAt = new DateTime(2026, 1, 14, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3124,7 +3195,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 3664m,
                             CreatedAt = new DateTime(2026, 1, 14, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3133,7 +3204,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 5008m,
                             CreatedAt = new DateTime(2026, 1, 14, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3142,7 +3213,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 3891m,
                             CreatedAt = new DateTime(2026, 1, 14, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3151,7 +3222,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 7752m,
                             CreatedAt = new DateTime(2026, 1, 14, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3160,7 +3231,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 7965m,
                             CreatedAt = new DateTime(2026, 1, 14, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3169,7 +3240,7 @@ namespace BankApi.Migrations
                             AccountId = 18,
                             Amount = 2639m,
                             CreatedAt = new DateTime(2026, 1, 14, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 18,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3178,7 +3249,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 4219m,
                             CreatedAt = new DateTime(2026, 1, 14, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3187,7 +3258,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 8315m,
                             CreatedAt = new DateTime(2026, 1, 14, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3196,7 +3267,7 @@ namespace BankApi.Migrations
                             AccountId = 6,
                             Amount = 8735m,
                             CreatedAt = new DateTime(2026, 1, 14, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 6,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3205,7 +3276,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 7869m,
                             CreatedAt = new DateTime(2026, 1, 14, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3214,7 +3285,7 @@ namespace BankApi.Migrations
                             AccountId = 10,
                             Amount = 4894m,
                             CreatedAt = new DateTime(2026, 1, 14, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 10,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3223,7 +3294,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 3162m,
                             CreatedAt = new DateTime(2026, 1, 14, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3232,7 +3303,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 3493m,
                             CreatedAt = new DateTime(2026, 1, 14, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3241,7 +3312,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 2425m,
                             CreatedAt = new DateTime(2026, 1, 14, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3250,7 +3321,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 1353m,
                             CreatedAt = new DateTime(2026, 1, 14, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3259,7 +3330,7 @@ namespace BankApi.Migrations
                             AccountId = 6,
                             Amount = 3551m,
                             CreatedAt = new DateTime(2026, 1, 14, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 6,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3268,7 +3339,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 5331m,
                             CreatedAt = new DateTime(2026, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3277,7 +3348,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 1187m,
                             CreatedAt = new DateTime(2026, 1, 15, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3286,7 +3357,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 1949m,
                             CreatedAt = new DateTime(2026, 1, 15, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3295,7 +3366,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 767m,
                             CreatedAt = new DateTime(2026, 1, 15, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3304,7 +3375,7 @@ namespace BankApi.Migrations
                             AccountId = 4,
                             Amount = 7997m,
                             CreatedAt = new DateTime(2026, 1, 15, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 4,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3313,7 +3384,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 1945m,
                             CreatedAt = new DateTime(2026, 1, 15, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3322,7 +3393,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 6523m,
                             CreatedAt = new DateTime(2026, 1, 15, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3331,7 +3402,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 8169m,
                             CreatedAt = new DateTime(2026, 1, 15, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3340,7 +3411,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 4155m,
                             CreatedAt = new DateTime(2026, 1, 15, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3349,7 +3420,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 8100m,
                             CreatedAt = new DateTime(2026, 1, 15, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3358,7 +3429,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 9897m,
                             CreatedAt = new DateTime(2026, 1, 15, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3367,7 +3438,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 2864m,
                             CreatedAt = new DateTime(2026, 1, 15, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3376,7 +3447,7 @@ namespace BankApi.Migrations
                             AccountId = 2,
                             Amount = 5941m,
                             CreatedAt = new DateTime(2026, 1, 15, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 2,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3385,7 +3456,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 5604m,
                             CreatedAt = new DateTime(2026, 1, 15, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3394,7 +3465,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 9924m,
                             CreatedAt = new DateTime(2026, 1, 15, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3403,7 +3474,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 1793m,
                             CreatedAt = new DateTime(2026, 1, 15, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3412,7 +3483,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 3085m,
                             CreatedAt = new DateTime(2026, 1, 15, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3421,7 +3492,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 7577m,
                             CreatedAt = new DateTime(2026, 1, 15, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3430,7 +3501,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 9404m,
                             CreatedAt = new DateTime(2026, 1, 15, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3439,7 +3510,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 6525m,
                             CreatedAt = new DateTime(2026, 1, 15, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3448,7 +3519,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 9797m,
                             CreatedAt = new DateTime(2026, 1, 15, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3457,7 +3528,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 5483m,
                             CreatedAt = new DateTime(2026, 1, 15, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3466,7 +3537,7 @@ namespace BankApi.Migrations
                             AccountId = 4,
                             Amount = 6606m,
                             CreatedAt = new DateTime(2026, 1, 15, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 4,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3475,7 +3546,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 6119m,
                             CreatedAt = new DateTime(2026, 1, 15, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3484,7 +3555,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 5721m,
                             CreatedAt = new DateTime(2026, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3493,7 +3564,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 4301m,
                             CreatedAt = new DateTime(2026, 1, 16, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3502,7 +3573,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 6307m,
                             CreatedAt = new DateTime(2026, 1, 16, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3511,7 +3582,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 6375m,
                             CreatedAt = new DateTime(2026, 1, 16, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3520,7 +3591,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 1308m,
                             CreatedAt = new DateTime(2026, 1, 16, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3529,7 +3600,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 4379m,
                             CreatedAt = new DateTime(2026, 1, 16, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3538,7 +3609,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 8249m,
                             CreatedAt = new DateTime(2026, 1, 16, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3547,7 +3618,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 591m,
                             CreatedAt = new DateTime(2026, 1, 16, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3556,7 +3627,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 5912m,
                             CreatedAt = new DateTime(2026, 1, 16, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3565,7 +3636,7 @@ namespace BankApi.Migrations
                             AccountId = 6,
                             Amount = 3294m,
                             CreatedAt = new DateTime(2026, 1, 16, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 6,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3574,7 +3645,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 7408m,
                             CreatedAt = new DateTime(2026, 1, 16, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3583,7 +3654,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 1757m,
                             CreatedAt = new DateTime(2026, 1, 16, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3592,7 +3663,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 6476m,
                             CreatedAt = new DateTime(2026, 1, 16, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3601,7 +3672,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 5943m,
                             CreatedAt = new DateTime(2026, 1, 16, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3610,7 +3681,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 730m,
                             CreatedAt = new DateTime(2026, 1, 16, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3619,7 +3690,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 823m,
                             CreatedAt = new DateTime(2026, 1, 16, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3628,7 +3699,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 2924m,
                             CreatedAt = new DateTime(2026, 1, 16, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3637,7 +3708,7 @@ namespace BankApi.Migrations
                             AccountId = 6,
                             Amount = 8097m,
                             CreatedAt = new DateTime(2026, 1, 16, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 6,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3646,7 +3717,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 2477m,
                             CreatedAt = new DateTime(2026, 1, 16, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3655,7 +3726,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 6227m,
                             CreatedAt = new DateTime(2026, 1, 16, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3664,7 +3735,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 4554m,
                             CreatedAt = new DateTime(2026, 1, 16, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3673,7 +3744,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 8091m,
                             CreatedAt = new DateTime(2026, 1, 16, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3682,7 +3753,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 4161m,
                             CreatedAt = new DateTime(2026, 1, 16, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3691,7 +3762,7 @@ namespace BankApi.Migrations
                             AccountId = 2,
                             Amount = 2066m,
                             CreatedAt = new DateTime(2026, 1, 16, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 2,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3700,7 +3771,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 6469m,
                             CreatedAt = new DateTime(2026, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3709,7 +3780,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 2022m,
                             CreatedAt = new DateTime(2026, 1, 17, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3718,7 +3789,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 8549m,
                             CreatedAt = new DateTime(2026, 1, 17, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3727,7 +3798,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 3335m,
                             CreatedAt = new DateTime(2026, 1, 17, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3736,7 +3807,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 7601m,
                             CreatedAt = new DateTime(2026, 1, 17, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3745,7 +3816,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 6824m,
                             CreatedAt = new DateTime(2026, 1, 17, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3754,7 +3825,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 998m,
                             CreatedAt = new DateTime(2026, 1, 17, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3763,7 +3834,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 5122m,
                             CreatedAt = new DateTime(2026, 1, 17, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3772,7 +3843,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 7485m,
                             CreatedAt = new DateTime(2026, 1, 17, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3781,7 +3852,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 775m,
                             CreatedAt = new DateTime(2026, 1, 17, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3790,7 +3861,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 8077m,
                             CreatedAt = new DateTime(2026, 1, 17, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3799,7 +3870,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 3345m,
                             CreatedAt = new DateTime(2026, 1, 17, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3808,7 +3879,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 7391m,
                             CreatedAt = new DateTime(2026, 1, 17, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3817,7 +3888,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 2745m,
                             CreatedAt = new DateTime(2026, 1, 17, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3826,7 +3897,7 @@ namespace BankApi.Migrations
                             AccountId = 10,
                             Amount = 3537m,
                             CreatedAt = new DateTime(2026, 1, 17, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 10,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3835,7 +3906,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 4236m,
                             CreatedAt = new DateTime(2026, 1, 17, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3844,7 +3915,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 8962m,
                             CreatedAt = new DateTime(2026, 1, 17, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3853,7 +3924,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 3746m,
                             CreatedAt = new DateTime(2026, 1, 17, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3862,7 +3933,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 1633m,
                             CreatedAt = new DateTime(2026, 1, 17, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3871,7 +3942,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 2003m,
                             CreatedAt = new DateTime(2026, 1, 17, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3880,7 +3951,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 7919m,
                             CreatedAt = new DateTime(2026, 1, 17, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3889,7 +3960,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 5643m,
                             CreatedAt = new DateTime(2026, 1, 17, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3898,7 +3969,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 8622m,
                             CreatedAt = new DateTime(2026, 1, 17, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3907,7 +3978,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 3541m,
                             CreatedAt = new DateTime(2026, 1, 17, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3916,7 +3987,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 1458m,
                             CreatedAt = new DateTime(2026, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3925,7 +3996,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 3434m,
                             CreatedAt = new DateTime(2026, 1, 18, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3934,7 +4005,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 4560m,
                             CreatedAt = new DateTime(2026, 1, 18, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3943,7 +4014,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 4810m,
                             CreatedAt = new DateTime(2026, 1, 18, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3952,7 +4023,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 4361m,
                             CreatedAt = new DateTime(2026, 1, 18, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3961,7 +4032,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 6683m,
                             CreatedAt = new DateTime(2026, 1, 18, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3970,7 +4041,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 4648m,
                             CreatedAt = new DateTime(2026, 1, 18, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3979,7 +4050,7 @@ namespace BankApi.Migrations
                             AccountId = 18,
                             Amount = 8045m,
                             CreatedAt = new DateTime(2026, 1, 18, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 18,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -3988,7 +4059,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 4861m,
                             CreatedAt = new DateTime(2026, 1, 18, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -3997,7 +4068,7 @@ namespace BankApi.Migrations
                             AccountId = 18,
                             Amount = 3143m,
                             CreatedAt = new DateTime(2026, 1, 18, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 18,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4006,7 +4077,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 1980m,
                             CreatedAt = new DateTime(2026, 1, 18, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4015,7 +4086,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 1456m,
                             CreatedAt = new DateTime(2026, 1, 18, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4024,7 +4095,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 5081m,
                             CreatedAt = new DateTime(2026, 1, 18, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4033,7 +4104,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 755m,
                             CreatedAt = new DateTime(2026, 1, 18, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4042,7 +4113,7 @@ namespace BankApi.Migrations
                             AccountId = 4,
                             Amount = 5093m,
                             CreatedAt = new DateTime(2026, 1, 18, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 4,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4051,7 +4122,7 @@ namespace BankApi.Migrations
                             AccountId = 18,
                             Amount = 9112m,
                             CreatedAt = new DateTime(2026, 1, 18, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 18,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4060,7 +4131,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 9720m,
                             CreatedAt = new DateTime(2026, 1, 18, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4069,7 +4140,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 7403m,
                             CreatedAt = new DateTime(2026, 1, 18, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4078,7 +4149,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 2908m,
                             CreatedAt = new DateTime(2026, 1, 18, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4087,7 +4158,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 2686m,
                             CreatedAt = new DateTime(2026, 1, 18, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4096,7 +4167,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 4207m,
                             CreatedAt = new DateTime(2026, 1, 18, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4105,7 +4176,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 5915m,
                             CreatedAt = new DateTime(2026, 1, 18, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4114,7 +4185,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 1431m,
                             CreatedAt = new DateTime(2026, 1, 18, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4123,7 +4194,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 6974m,
                             CreatedAt = new DateTime(2026, 1, 18, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4132,7 +4203,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 529m,
                             CreatedAt = new DateTime(2026, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4141,7 +4212,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 4649m,
                             CreatedAt = new DateTime(2026, 1, 19, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4150,7 +4221,7 @@ namespace BankApi.Migrations
                             AccountId = 6,
                             Amount = 3923m,
                             CreatedAt = new DateTime(2026, 1, 19, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 6,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4159,7 +4230,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 5056m,
                             CreatedAt = new DateTime(2026, 1, 19, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4168,7 +4239,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 3690m,
                             CreatedAt = new DateTime(2026, 1, 19, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4177,7 +4248,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 3868m,
                             CreatedAt = new DateTime(2026, 1, 19, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4186,7 +4257,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 9388m,
                             CreatedAt = new DateTime(2026, 1, 19, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4195,7 +4266,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 6070m,
                             CreatedAt = new DateTime(2026, 1, 19, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4204,7 +4275,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 3642m,
                             CreatedAt = new DateTime(2026, 1, 19, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4213,7 +4284,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 9598m,
                             CreatedAt = new DateTime(2026, 1, 19, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4222,7 +4293,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 8871m,
                             CreatedAt = new DateTime(2026, 1, 19, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4231,7 +4302,7 @@ namespace BankApi.Migrations
                             AccountId = 2,
                             Amount = 9029m,
                             CreatedAt = new DateTime(2026, 1, 19, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 2,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4240,7 +4311,7 @@ namespace BankApi.Migrations
                             AccountId = 15,
                             Amount = 6089m,
                             CreatedAt = new DateTime(2026, 1, 19, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 15,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4249,7 +4320,7 @@ namespace BankApi.Migrations
                             AccountId = 2,
                             Amount = 1730m,
                             CreatedAt = new DateTime(2026, 1, 19, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 2,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4258,7 +4329,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 7088m,
                             CreatedAt = new DateTime(2026, 1, 19, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4267,7 +4338,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 3980m,
                             CreatedAt = new DateTime(2026, 1, 19, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4276,7 +4347,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 9842m,
                             CreatedAt = new DateTime(2026, 1, 19, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4285,7 +4356,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 3168m,
                             CreatedAt = new DateTime(2026, 1, 19, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4294,7 +4365,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 3899m,
                             CreatedAt = new DateTime(2026, 1, 19, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4303,7 +4374,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 1939m,
                             CreatedAt = new DateTime(2026, 1, 19, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4312,7 +4383,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 1437m,
                             CreatedAt = new DateTime(2026, 1, 19, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4321,7 +4392,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 8235m,
                             CreatedAt = new DateTime(2026, 1, 19, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4330,7 +4401,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 3336m,
                             CreatedAt = new DateTime(2026, 1, 19, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4339,7 +4410,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 1549m,
                             CreatedAt = new DateTime(2026, 1, 19, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4348,7 +4419,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 8434m,
                             CreatedAt = new DateTime(2026, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4357,7 +4428,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 6799m,
                             CreatedAt = new DateTime(2026, 1, 20, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4366,7 +4437,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 8022m,
                             CreatedAt = new DateTime(2026, 1, 20, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4375,7 +4446,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 2026m,
                             CreatedAt = new DateTime(2026, 1, 20, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4384,7 +4455,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 4019m,
                             CreatedAt = new DateTime(2026, 1, 20, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4393,7 +4464,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 1141m,
                             CreatedAt = new DateTime(2026, 1, 20, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4402,7 +4473,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 7644m,
                             CreatedAt = new DateTime(2026, 1, 20, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4411,7 +4482,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 6678m,
                             CreatedAt = new DateTime(2026, 1, 20, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4420,7 +4491,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 4778m,
                             CreatedAt = new DateTime(2026, 1, 20, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4429,7 +4500,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 7336m,
                             CreatedAt = new DateTime(2026, 1, 20, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4438,7 +4509,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 578m,
                             CreatedAt = new DateTime(2026, 1, 20, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4447,7 +4518,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 4079m,
                             CreatedAt = new DateTime(2026, 1, 20, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4456,7 +4527,7 @@ namespace BankApi.Migrations
                             AccountId = 30,
                             Amount = 5573m,
                             CreatedAt = new DateTime(2026, 1, 20, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 30,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4465,7 +4536,7 @@ namespace BankApi.Migrations
                             AccountId = 17,
                             Amount = 9958m,
                             CreatedAt = new DateTime(2026, 1, 20, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 17,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4474,7 +4545,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 6828m,
                             CreatedAt = new DateTime(2026, 1, 20, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4483,7 +4554,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 7928m,
                             CreatedAt = new DateTime(2026, 1, 20, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4492,7 +4563,7 @@ namespace BankApi.Migrations
                             AccountId = 2,
                             Amount = 5507m,
                             CreatedAt = new DateTime(2026, 1, 20, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 2,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4501,7 +4572,7 @@ namespace BankApi.Migrations
                             AccountId = 29,
                             Amount = 5268m,
                             CreatedAt = new DateTime(2026, 1, 20, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 29,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4510,7 +4581,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 3045m,
                             CreatedAt = new DateTime(2026, 1, 20, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4519,7 +4590,7 @@ namespace BankApi.Migrations
                             AccountId = 23,
                             Amount = 9194m,
                             CreatedAt = new DateTime(2026, 1, 20, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 23,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4528,7 +4599,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 4430m,
                             CreatedAt = new DateTime(2026, 1, 20, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4537,7 +4608,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 9379m,
                             CreatedAt = new DateTime(2026, 1, 20, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4546,7 +4617,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 355m,
                             CreatedAt = new DateTime(2026, 1, 20, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4555,7 +4626,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 5252m,
                             CreatedAt = new DateTime(2026, 1, 20, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4564,7 +4635,7 @@ namespace BankApi.Migrations
                             AccountId = 25,
                             Amount = 6957m,
                             CreatedAt = new DateTime(2026, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 25,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4573,7 +4644,7 @@ namespace BankApi.Migrations
                             AccountId = 1,
                             Amount = 5908m,
                             CreatedAt = new DateTime(2026, 1, 21, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 1,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4582,7 +4653,7 @@ namespace BankApi.Migrations
                             AccountId = 3,
                             Amount = 9879m,
                             CreatedAt = new DateTime(2026, 1, 21, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 3,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4591,7 +4662,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 2503m,
                             CreatedAt = new DateTime(2026, 1, 21, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4600,7 +4671,7 @@ namespace BankApi.Migrations
                             AccountId = 26,
                             Amount = 8053m,
                             CreatedAt = new DateTime(2026, 1, 21, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 26,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4609,7 +4680,7 @@ namespace BankApi.Migrations
                             AccountId = 14,
                             Amount = 6163m,
                             CreatedAt = new DateTime(2026, 1, 21, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 14,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4618,7 +4689,7 @@ namespace BankApi.Migrations
                             AccountId = 9,
                             Amount = 2553m,
                             CreatedAt = new DateTime(2026, 1, 21, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 9,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4627,7 +4698,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 5349m,
                             CreatedAt = new DateTime(2026, 1, 21, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4636,7 +4707,7 @@ namespace BankApi.Migrations
                             AccountId = 10,
                             Amount = 2337m,
                             CreatedAt = new DateTime(2026, 1, 21, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 10,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4645,7 +4716,7 @@ namespace BankApi.Migrations
                             AccountId = 24,
                             Amount = 3116m,
                             CreatedAt = new DateTime(2026, 1, 21, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 24,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4654,7 +4725,7 @@ namespace BankApi.Migrations
                             AccountId = 13,
                             Amount = 9494m,
                             CreatedAt = new DateTime(2026, 1, 21, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 13,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4663,7 +4734,7 @@ namespace BankApi.Migrations
                             AccountId = 20,
                             Amount = 1490m,
                             CreatedAt = new DateTime(2026, 1, 21, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 20,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4672,7 +4743,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 3386m,
                             CreatedAt = new DateTime(2026, 1, 21, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4681,7 +4752,7 @@ namespace BankApi.Migrations
                             AccountId = 6,
                             Amount = 6491m,
                             CreatedAt = new DateTime(2026, 1, 21, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 6,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4690,7 +4761,7 @@ namespace BankApi.Migrations
                             AccountId = 16,
                             Amount = 5500m,
                             CreatedAt = new DateTime(2026, 1, 21, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 16,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4699,7 +4770,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 576m,
                             CreatedAt = new DateTime(2026, 1, 21, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4708,7 +4779,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 7053m,
                             CreatedAt = new DateTime(2026, 1, 21, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4717,7 +4788,7 @@ namespace BankApi.Migrations
                             AccountId = 27,
                             Amount = 8010m,
                             CreatedAt = new DateTime(2026, 1, 21, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 27,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4726,7 +4797,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 2969m,
                             CreatedAt = new DateTime(2026, 1, 21, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4735,7 +4806,7 @@ namespace BankApi.Migrations
                             AccountId = 7,
                             Amount = 7022m,
                             CreatedAt = new DateTime(2026, 1, 21, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 7,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4744,7 +4815,7 @@ namespace BankApi.Migrations
                             AccountId = 8,
                             Amount = 2930m,
                             CreatedAt = new DateTime(2026, 1, 21, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 8,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4753,7 +4824,7 @@ namespace BankApi.Migrations
                             AccountId = 28,
                             Amount = 360m,
                             CreatedAt = new DateTime(2026, 1, 21, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 28,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4762,7 +4833,7 @@ namespace BankApi.Migrations
                             AccountId = 5,
                             Amount = 1824m,
                             CreatedAt = new DateTime(2026, 1, 21, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 5,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4771,7 +4842,7 @@ namespace BankApi.Migrations
                             AccountId = 21,
                             Amount = 8191m,
                             CreatedAt = new DateTime(2026, 1, 21, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 21,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4780,7 +4851,7 @@ namespace BankApi.Migrations
                             AccountId = 12,
                             Amount = 1072m,
                             CreatedAt = new DateTime(2026, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 12,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4789,7 +4860,7 @@ namespace BankApi.Migrations
                             AccountId = 22,
                             Amount = 9899m,
                             CreatedAt = new DateTime(2026, 1, 22, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 22,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4798,7 +4869,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 4374m,
                             CreatedAt = new DateTime(2026, 1, 22, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Withdrawal"
                         },
                         new
@@ -4807,7 +4878,7 @@ namespace BankApi.Migrations
                             AccountId = 19,
                             Amount = 1824m,
                             CreatedAt = new DateTime(2026, 1, 22, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 19,
+                            Description = "",
                             Type = "Deposit"
                         },
                         new
@@ -4816,7 +4887,7 @@ namespace BankApi.Migrations
                             AccountId = 11,
                             Amount = 5379m,
                             CreatedAt = new DateTime(2026, 1, 22, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            RelatedAccountId = 11,
+                            Description = "",
                             Type = "Withdrawal"
                         });
                 });
@@ -5151,14 +5222,13 @@ namespace BankApi.Migrations
                     b.HasOne("BankApi.Models.Account", "Account")
                         .WithMany("Transactions")
                         .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BankApi.Models.Account", "RelatedAccount")
                         .WithMany()
                         .HasForeignKey("RelatedAccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Account");
 

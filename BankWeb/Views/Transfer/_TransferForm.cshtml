@@ -1,0 +1,44 @@
+﻿@model TransferViewModel
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success" role="alert">@ViewBag.Success</div>
+}
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+<div class="mb-3">
+    <label asp-for="FromAccountNumber" class="form-label"></label>
+    <select asp-for="FromAccountNumber" class="form-select">
+        <option value="">-- Choose one of your accounts --</option>
+        @foreach (var a in Model.MyAccounts.Where(a => a.IsActive))
+        {
+            <option value="@a.AccountNumber">@a.AccountNumber - @a.AccountName (@a.Balance.ToString("C"))</option>
+        }
+    </select>
+    <span asp-validation-for="FromAccountNumber" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="ToAccountNumber" class="form-label"></label>
+    <input asp-for="ToAccountNumber" class="form-control" list="myAccounts" placeholder="Account number" />
+    <datalist id="myAccounts">
+        @foreach (var a in Model.MyAccounts.Where(a => a.IsActive))
+        {
+            <option value="@a.AccountNumber">@a.AccountName (my account)</option>
+        }
+    </datalist>
+    <div class="form-text">Type another customer's account number, or pick one of your own accounts.</div>
+    <span asp-validation-for="ToAccountNumber" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Amount" class="form-label">Amount ($)</label>
+    <input asp-for="Amount" class="form-control" type="number" step="0.01" min="0.01" />
+    <span asp-validation-for="Amount" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <input asp-for="Description" class="form-control" maxlength="100" placeholder="e.g. Rent for October" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+<button type="button" id="transferButton" class="btn btn-primary" onclick="performTransfer()">Transfer</button>

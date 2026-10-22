@@ -1,5 +1,4 @@
-﻿
-using BankApi.Models;
+﻿using BankApi.Models;
 using Microsoft.EntityFrameworkCore;
 namespace BankApi.Data
 {
@@ -39,14 +38,22 @@ namespace BankApi.Data
                 .HasMany(a => a.Transactions)
                 .WithOne(t => t.Account)
                 .HasForeignKey(t => t.AccountId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // The other account of a transfer (optional: deposits and withdrawals have none)
+            modelBuilder.Entity<Transaction>()
+                .HasOne(t => t.RelatedAccount)
+                .WithMany()
+                .HasForeignKey(t => t.RelatedAccountId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Restrict);
 
             //data seeding
             //fixed seed (1) so that rand gives the same random num each run
             Random rand = new Random(1);
 
             //20 users
-            string[] names = {"Sarah", "Bob", "Ben", "Alice", "Matilda", "Grace", "John", "Clio", "Daniel", "Liam", "Steve", "Daisy", "Coco", "Faith", "Hazel", "Olivia", "Nathan", "Ashley", "Tiara", "Amy"};
+            string[] names = { "Sarah", "Bob", "Ben", "Alice", "Matilda", "Grace", "John", "Clio", "Daniel", "Liam", "Steve", "Daisy", "Coco", "Faith", "Hazel", "Olivia", "Nathan", "Ashley", "Tiara", "Amy" };
 
             List<User> users = new List<User>();
             for (int i = 1; i <= 20; i++)
@@ -72,6 +79,9 @@ namespace BankApi.Data
             }
             modelBuilder.Entity<User>().HasData(users);
 
+            //fixed start date, so seed data is same evert run
+            DateTime startDate = new DateTime(2026, 1, 1, 8, 0, 0);
+
             //30 accounts
             //first 10 users will have 2 acc each, the rest hv one only
             List<Account> accounts = new List<Account>();
@@ -82,6 +92,7 @@ namespace BankApi.Data
                 account.AccountNumber = "ACCOUNT" + (1000 + i);
                 account.Balance = 0;
                 account.IsActive = true;
+                account.CreatedAt = startDate;
                 if (i <= 20)
                 {
                     //acc 1-20 belong to user 1-20
@@ -97,8 +108,6 @@ namespace BankApi.Data
 
             //500 transactions
             List<Transaction> transactions = new List<Transaction>();
-            //fixed start date, so seed data is same evert run
-            DateTime startDate = new DateTime(2026, 1, 1, 8, 0, 0);
 
             for (int i = 1; i <= 500; i++)
             {
@@ -108,7 +117,7 @@ namespace BankApi.Data
                 transaction.CreatedAt = startDate.AddHours(i);
 
                 //first 30 acc will hv a transaction each and then cincai pick one
-                
+
                 int accID;
                 if (i <= 30)
                 {
@@ -116,14 +125,14 @@ namespace BankApi.Data
                 }
                 else
                 {
-                    accID = rand.Next(1,31);
+                    accID = rand.Next(1, 31);
                 }
 
                 Account account = accounts[accID - 1];
 
                 transaction.AccountId = accID;
-                //user owns multiple acc but still under same ID
-                transaction.RelatedAccountId = accID;
+                //deposits and withdrawals have no other account (only transfers use RelatedAccountId)
+                transaction.RelatedAccountId = null;
 
                 decimal amount = rand.Next(10, 10000);
                 transaction.Amount = amount;

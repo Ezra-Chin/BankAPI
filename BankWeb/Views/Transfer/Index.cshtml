@@ -1,0 +1,23 @@
+﻿@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+@{
+    ViewData["Title"] = "Transfer money";
+}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <h1 class="h3 mb-3">Transfer money</h1>
+
+        <input type="hidden" id="requestToken" value="@Antiforgery.GetAndStoreTokens(Context).RequestToken" />
+
+        <input type="hidden" id="startFrom" value="@ViewBag.From" />
+
+        <div id="transferMessage"></div>
+
+        <div id="transferArea">
+            <p class="text-muted">Loading…</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/transfer.js" asp-append-version="true"></script>
+}

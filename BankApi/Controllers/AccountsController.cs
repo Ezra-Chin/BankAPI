@@ -1,10 +1,11 @@
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BankApi.Models;
 using BankApi.Data;
 
-public class AccountsController : Controller
+[Route("api/[controller]")]
+[ApiController]
+public class AccountsController : ControllerBase
 {
     private readonly DBManager _context;
 
@@ -13,138 +14,233 @@ public class AccountsController : Controller
         _context = context;
     }
 
-    // GET: ACCOUNTS
-    public async Task<IActionResult> Index()    
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<AccountView>>> GetAccounts(string? username)
     {
-        return View(await _context.Accounts.ToListAsync());
-    }
+        var query = _context.Accounts.AsQueryable();
 
-    // GET: ACCOUNTS/Details/5
-    public async Task<IActionResult> Details(int? id)
-    {
-        if (id == null)
+        if (!string.IsNullOrWhiteSpace(username))
         {
-            return NotFound();
-        }
-
-        var account = await _context.Accounts
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (account == null)
-        {
-            return NotFound();
-        }
-
-        return View(account);
-    }
-
-    // GET: ACCOUNTS/Create
-    public IActionResult Create()
-    {
-        return View();
-    }
-
-    // POST: ACCOUNTS/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,AccountNumber,Balance,IsActive,UserId,User,Transactions")] Account account)
-    {
-        if (ModelState.IsValid)
-        {
-            _context.Add(account);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        return View(account);
-    }
-
-    // GET: ACCOUNTS/Edit/5
-    public async Task<IActionResult> Edit(int? id)
-    {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var account = await _context.Accounts.FindAsync(id);
-        if (account == null)
-        {
-            return NotFound();
-        }
-        return View(account);
-    }
-
-    // POST: ACCOUNTS/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? id, [Bind("Id,AccountNumber,Balance,IsActive,UserId,User,Transactions")] Account account)
-    {
-        if (id != account.Id)
-        {
-            return NotFound();
-        }
-
-        if (ModelState.IsValid)
-        {
-            try
+            var name = username.Trim().ToLower();
+            if (!await _context.Users.AnyAsync(u => u.Username == name))
             {
-                _context.Update(account);
-                await _context.SaveChangesAsync();
+                return NotFound(new ApiError("USER_NOT_FOUND", $"User '{username}' does not exist."));
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AccountExists(account.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return RedirectToAction(nameof(Index));
+            query = query.Where(a => a.User.Username == name);
         }
-        return View(account);
+
+        var accounts = await query.OrderBy(a => a.AccountNumber).Select(a => new AccountView
+        {
+            AccountNumber = a.AccountNumber,
+            AccountName = a.AccountName,
+            Balance = a.Balance,
+            IsActive = a.IsActive,
+            CreatedAt = a.CreatedAt,
+            Username = a.User.Username
+        }).ToListAsync();
+
+        return Ok(accounts);
     }
 
-    // GET: ACCOUNTS/Delete/5
-    public async Task<IActionResult> Delete(int? id)
+    [HttpGet("{accountNumber}")]
+    public async Task<ActionResult<AccountView>> GetAccount(string accountNumber)
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var account = await _context.Accounts
-            .FirstOrDefaultAsync(m => m.Id == id);
+        var account = await _context.Accounts.Include(a => a.User)
+                                             .FirstOrDefaultAsync(a => a.AccountNumber == accountNumber);
         if (account == null)
         {
-            return NotFound();
+            return NotFound(AccountNotFound(accountNumber));
         }
-
-        return View(account);
+        return Ok(ToView(account));
     }
 
-    // POST: ACCOUNTS/Delete/5
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int? id)
+    [HttpGet("{accountNumber}/transactions")]
+    public async Task<ActionResult<PagedResult<TransactionView>>> GetAccountTransactions(
+        string accountNumber, DateTime? from, DateTime? to,
+        int page = 1, int pageSize = 10, string sortBy = "date", string sortDir = "desc")
     {
-        var account = await _context.Accounts.FindAsync(id);
-        if (account != null)
+        if (page < 1 || pageSize < 1 || pageSize > 100)
         {
-            _context.Accounts.Remove(account);
+            return BadRequest(new ApiError("INVALID_PAGING", "page must be 1 or more and pageSize must be between 1 and 100."));
+        }
+        if (from != null && to != null && from > to)
+        {
+            return BadRequest(new ApiError("INVALID_DATE_RANGE", "'from' must be on or before 'to'."));
+        }
+        if (!await _context.Accounts.AnyAsync(a => a.AccountNumber == accountNumber))
+        {
+            return NotFound(AccountNotFound(accountNumber));
+        }
+
+        var query = _context.Transactions.Where(t => t.Account.AccountNumber == accountNumber);
+
+        if (from != null)
+        {
+            query = query.Where(t => t.CreatedAt >= from.Value);
+        }
+        if (to != null)
+        {
+            var end = to.Value.TimeOfDay == TimeSpan.Zero ? to.Value.AddDays(1) : to.Value;
+            query = query.Where(t => t.CreatedAt < end);
+        }
+
+        bool ascending = sortDir.ToLower() == "asc";
+        switch (sortBy.ToLower())
+        {
+            case "date":
+                query = ascending ? query.OrderBy(t => t.CreatedAt).ThenBy(t => t.Id) : query.OrderByDescending(t => t.CreatedAt).ThenByDescending(t => t.Id);
+                break;
+            case "amount":
+                query = ascending ? query.OrderBy(t => (double)t.Amount) : query.OrderByDescending(t => (double)t.Amount);
+                break;
+            case "type":
+                query = ascending ? query.OrderBy(t => t.Type) : query.OrderByDescending(t => t.Type);
+                break;
+            default:
+                return BadRequest(new ApiError("INVALID_SORT", "sortBy must be one of: date, amount, type."));
+        }
+
+        var result = new PagedResult<TransactionView>
+        {
+            TotalCount = await query.CountAsync(),
+            Page = page,
+            PageSize = pageSize,
+            Items = await query.Skip((page - 1) * pageSize).Take(pageSize).Select(t => new TransactionView
+            {
+                Id = t.Id,
+                Type = t.Type,
+                Amount = t.Amount,
+                Description = t.Description,
+                CreatedAt = t.CreatedAt,
+                AccountNumber = t.Account.AccountNumber,
+                Username = t.Account.User.Username,
+                RelatedAccountNumber = t.RelatedAccount != null ? t.RelatedAccount.AccountNumber : null
+            }).ToListAsync()
+        };
+        return Ok(result);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<AccountView>> PostAccount([FromBody] CreateAccountRequest request)
+    {
+        var username = request.Username.Trim().ToLower();
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        if (user == null)
+        {
+            return NotFound(new ApiError("USER_NOT_FOUND", $"User '{request.Username}' does not exist."));
+        }
+        if (!user.IsActive)
+        {
+            return UnprocessableEntity(new ApiError("USER_INACTIVE", "Cannot open an account for a deactivated user."));
+        }
+        if (decimal.Round(request.InitialDeposit, 2) != request.InitialDeposit)
+        {
+            return BadRequest(TooManyDecimals("InitialDeposit"));
+        }
+
+        var account = new Account
+        {
+            AccountNumber = await NewAccountNumber(),
+            AccountName = request.AccountName.Trim(),
+            Balance = request.InitialDeposit,
+            IsActive = true,
+            CreatedAt = DateTime.Now,
+            User = user
+        };
+        _context.Accounts.Add(account);
+
+        if (request.InitialDeposit > 0)
+        {
+            _context.Transactions.Add(new Transaction
+            {
+                Account = account,
+                Type = "Deposit",
+                Amount = request.InitialDeposit,
+                Description = "Opening deposit",
+                CreatedAt = account.CreatedAt
+            });
         }
 
         await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+
+        return CreatedAtAction(nameof(GetAccount), new { accountNumber = account.AccountNumber }, ToView(account));
     }
 
-    private bool AccountExists(int? id)
+    [HttpPut("{accountNumber}")]
+    public async Task<IActionResult> PutAccount(string accountNumber, [FromBody] UpdateAccountRequest request)
     {
-        return _context.Accounts.Any(e => e.Id == id);
+        var account = await _context.Accounts.FirstOrDefaultAsync(a => a.AccountNumber == accountNumber);
+        if (account == null)
+        {
+            return NotFound(AccountNotFound(accountNumber));
+        }
+
+        account.AccountName = request.AccountName.Trim();
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+
+    [HttpDelete("{accountNumber}")]
+    public async Task<IActionResult> DeactivateAccount(string accountNumber)
+    {
+        var account = await _context.Accounts.FirstOrDefaultAsync(a => a.AccountNumber == accountNumber);
+        if (account == null)
+        {
+            return NotFound(AccountNotFound(accountNumber));
+        }
+
+        account.IsActive = false;
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+
+    [HttpPut("{accountNumber}/activate")]
+    public async Task<IActionResult> ActivateAccount(string accountNumber)
+    {
+        var account = await _context.Accounts.FirstOrDefaultAsync(a => a.AccountNumber == accountNumber);
+        if (account == null)
+        {
+            return NotFound(AccountNotFound(accountNumber));
+        }
+
+        account.IsActive = true;
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+
+    private async Task<string> NewAccountNumber()
+    {
+        var random = new Random();
+        string number;
+        do
+        {
+            number = random.Next(10000000, 99999999).ToString();
+        }
+        while (await _context.Accounts.AnyAsync(a => a.AccountNumber == number));
+        return number;
+    }
+
+    private static AccountView ToView(Account a)
+    {
+        return new AccountView
+        {
+            AccountNumber = a.AccountNumber,
+            AccountName = a.AccountName,
+            Balance = a.Balance,
+            IsActive = a.IsActive,
+            CreatedAt = a.CreatedAt,
+            Username = a.User.Username
+        };
+    }
+
+    private static ApiError AccountNotFound(string accountNumber)
+    {
+        return new ApiError("ACCOUNT_NOT_FOUND", $"Account '{accountNumber}' does not exist.");
+    }
+
+    private static ApiError TooManyDecimals(string field)
+    {
+        return new ApiError("VALIDATION_FAILED", "One or more fields failed validation.",
+            new Dictionary<string, string[]> { { field, new[] { "Amount can have at most 2 decimal places." } } });
     }
 }

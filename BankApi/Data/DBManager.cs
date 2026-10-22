@@ -32,7 +32,7 @@ namespace BankApi.Data
                 .HasMany(u => u.Accounts)
                 .WithOne(a => a.User)
                 .HasForeignKey(a => a.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Account>()
                 .HasMany(a => a.Transactions)

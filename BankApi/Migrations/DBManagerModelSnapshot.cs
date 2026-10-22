@@ -5211,7 +5211,7 @@ namespace BankApi.Migrations
                     b.HasOne("BankApi.Models.User", "User")
                         .WithMany("Accounts")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");

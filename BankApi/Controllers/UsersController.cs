@@ -1,11 +1,11 @@
 
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using BankApi.Models;
 using BankApi.Data;
-
+using BankApi.Models;
 //rmv if not needed
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Net.Mail;
 
 [ApiController]
 [Route("api/users")]
@@ -37,14 +37,33 @@ public class UsersController : Controller
         {
             return BadRequest(new ApiError("PICTURE_FORMAT","Picture must be in .jpg, .jpeg or .png format"));
         }
+        string username = userCreateProfile.Username.Trim().ToLower();
 
-        bool usernameExists = await _context.Users.AnyAsync(u => u.Username == userCreateProfile.Username);
+        bool usernameExists = await _context.Users.AnyAsync(u => u.Username == username);
         if (usernameExists)
         {
             return Conflict(new ApiError("USERNAME_TAKEN", "This username is already taken"));
         }
 
-        bool emailExists = await _context.Users.AnyAsync(u => u.Email == userCreateProfile.Email);
+        //source : https://learn.microsoft.com/en-us/dotnet/api/system.net.mail.mailaddress?view=net-10.0
+        //check if the mail given is actually a valid email 
+        bool isValidEmail;
+
+        try
+        {
+            MailAddress address = new MailAddress(userCreateProfile.Email);
+            isValidEmail = address.Address == userCreateProfile.Email;
+        }
+        catch (FormatException)
+        {
+            isValidEmail = false;
+        }
+        if (!isValidEmail)
+        {
+            return BadRequest(new ApiError("INVALID_EMAIL","Please provide a valid email address"));
+        }
+
+        bool emailExists = await _context.Users.AnyAsync(u => u.Email == email);
         if (emailExists)
         {
             return Conflict(new ApiError("EMAIL_TAKEN", "This email address is already taken"));
@@ -56,9 +75,9 @@ public class UsersController : Controller
         //create a user tntity to store in dbs
         var user = new User
         {
-            Username = userCreateProfile.Username,
+            Username = username,
             Name = userCreateProfile.Name,
-            Email = userCreateProfile.Email,
+            Email = email,
             Address = userCreateProfile.Address,
             Phone = userCreateProfile.Phone,
             PictureURL = DefaultProfilePicture,

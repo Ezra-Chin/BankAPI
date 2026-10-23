@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Log in Page";
+    string message = ViewBag.message;
+    string error = ViewBag.Error;
+}
+
+<h2>Login</h2>
+
+<div id="LoginForm">
+    @if(message != null && message.Equals("Logged in"))
+    {
+        <p id="status">User Successfully Logged In</p>
+    }
+
+    else
+    {
+        @if (error != null && error.Length > 0)
+        {
+            <p>@error</p>
+        }
+
+        <form action="/Auth/Login" method="post">
+            <input type="text" id="Username" name="Username" placeholder="User Name" />
+            <input type="text" id="Password" name="Password" placeholder="Password" />
+            <input type="submit" value="Login" />
+        </form>
+    }
+</div>
+
+<p>Don't have an account? <a href="/Auth/Register">Register</a> </p>

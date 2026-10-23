@@ -3,7 +3,7 @@ using RestSharp;
 
 namespace BankWeb.Services
 {
-    public partial class BankAPIClientUsers
+    public partial class BankApiClient
     {
         //register new customer by sending it to Part A
         public Task<ApiResult<UserResponse>> Register(UserCreateProfile userCreateProfile)
@@ -42,6 +42,55 @@ namespace BankWeb.Services
             restRequest.AddBody(userLogin);
 
             return Send<UserResponse>(restRequest);
+        }
+
+        //get user profile from Part A
+        public Task<ApiResult<UserResponse>> GetUser (string username)
+        {
+            RestRequest restRequest = new RestRequest("api/users/{username}", Method.Get);
+            restRequest.AddUrlSegment("username", username);
+            
+            return Send<UserResponse>(restRequest);
+        }
+
+        //update customer profile through Part A
+        public Task<ApiResult<object>> UpdateUser(string username, UserUpdateProfile userUpdateProfile)
+        {
+            RestRequest restRequest = new RestRequest("api/users/{username}", Method.Put);
+            restRequest.AddUrlSegment("username", username);
+
+            if (userUpdateProfile.Name != null)
+            {
+                restRequest.AddParameter("Name", userUpdateProfile.Name);
+            }
+            if (userUpdateProfile.Email != null)
+            {
+                restRequest.AddParameter("Email", userUpdateProfile.Email);
+            }
+            if (userUpdateProfile.Phone != null)
+            {
+                restRequest.AddParameter("Phone", userUpdateProfile.Phone);
+            }
+            if (userUpdateProfile.Address != null)
+            {
+                restRequest.AddParameter("Address", userUpdateProfile.Address);
+            }
+            if (userUpdateProfile.Password != null)
+            {
+                restRequest.AddParameter("Password", userUpdateProfile.Password);
+            }
+            if (userUpdateProfile.Picture != null && userUpdateProfile.Picture.Length > 0)
+            {
+                restRequest.AddFile(
+                    //name of the file field expected by Part A
+                    "Picture",
+                    () => userUpdateProfile.Picture.OpenReadStream(),
+                    userUpdateProfile.Picture.FileName,
+                    userUpdateProfile.Picture.ContentType
+                );
+            }
+
+            return Send<object>(restRequest);
         }
     }
 }

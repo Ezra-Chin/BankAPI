@@ -66,7 +66,7 @@ public class UsersController : Controller
             PasswordSalt = Convert.ToBase64String(salt),
             IsActive = true,
 
-            Role = "Customer";
+            Role = "Customer"
         };
 
         //add user to dbs

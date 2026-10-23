@@ -32,8 +32,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 //soruce https://learn.microsoft.com/en-us/aspnet/core/fundamentals/error-handling?view=aspnetcore-10.0
-if (!app.Environment.IsDevelopment())
-{
+
     //app.UseExceptionHandler("/Home/Error");
 
 
@@ -46,8 +45,8 @@ if (!app.Environment.IsDevelopment())
             await context.Response.WriteAsJsonAsync(
                 new ApiError("INTERNAL_ERROR", "An unexpected error occurred."));
         });
-    });
-}
+   });
+
 
 //create dbs and apply seed data automatically on first run
 //ref source: https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli

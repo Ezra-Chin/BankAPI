@@ -65,6 +65,8 @@ public class UsersController : Controller
             PasswordHash = hashedPassword,
             PasswordSalt = Convert.ToBase64String(salt),
             IsActive = true
+
+            Role = "Customer";
         };
 
         //add user to dbs
@@ -301,6 +303,8 @@ public class UsersController : Controller
             Phone = user.Phone,
             PictureURL = user.PictureURL,
             IsActive = user.IsActive
+            
+            Role = user.Role;
         };
     }
 }

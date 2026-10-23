@@ -15,5 +15,7 @@ namespace BankApi.Models
         public string PasswordSalt { get; set; }
         public bool IsActive { get; set; }
         public ICollection<Account> Accounts { get; set; }
+
+        public string Role {get; set; } = "Customer";
     }
 }

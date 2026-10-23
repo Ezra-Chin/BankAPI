@@ -113,7 +113,7 @@ namespace BankWeb.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, result.Data.Username),
-                new Claim("FullNAme", result.Data.Name),
+                new Claim("FullName", result.Data.Name),
                 new Claim(ClaimTypes.Role, result.Data.Role)
             };
 

@@ -16,5 +16,7 @@ namespace BankWeb.Models
         public string Phone {get; set;} = "";
         public string PictureURL {get; set;}
         public bool IsActive { get; set; }
+
+        public string Role {get; set; } = "Customer";
     }
 }

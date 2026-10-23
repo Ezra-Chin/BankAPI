@@ -75,6 +75,8 @@ namespace BankApi.Data
                 user.PasswordHash = HashingHelper.HashPassword("Password123", salt);
                 user.PasswordSalt = Convert.ToBase64String(salt);
                 user.IsActive = true;
+
+                user.Role = "Customer";
                 users.Add(user);
             }
             modelBuilder.Entity<User>().HasData(users);

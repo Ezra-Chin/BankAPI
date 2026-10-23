@@ -130,7 +130,7 @@ namespace BankWeb.Controllers
         }
 
         //log out n remove cookie
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

@@ -7,24 +7,24 @@
 <h2>Login</h2>
 
 <div id="LoginForm">
-    @if(message != null && message.Equals("Logged in"))
+    @if(message != null)
     {
-        <p id="status">User Successfully Logged In</p>
+        <p>@message</p>
     }
 
-    else
+    @if (error != null)
     {
-        @if (error != null && error.Length > 0)
-        {
-            <p>@error</p>
-        }
-
-        <form action="/Auth/Login" method="post">
-            <input type="text" id="Username" name="Username" placeholder="User Name" />
-            <input type="text" id="Password" name="Password" placeholder="Password" />
-            <input type="submit" value="Login" />
-        </form>
+        <p>@error</p>
     }
+        
+
+    <form asp-controller="Auth" asp-action="Login" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="text" id="Username" name="Username" placeholder="User Name" />
+        <input type="text" id="Password" name="Password" placeholder="Password" />
+        <input type="submit" value="Login" />
+    </form>
 </div>
 
 <p>Don't have an account? <a href="/Auth/Register">Register</a> </p>

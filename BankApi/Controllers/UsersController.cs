@@ -1,11 +1,11 @@
 
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using BankApi.Models;
 using BankApi.Data;
-
+using BankApi.Models;
 //rmv if not needed
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Net.Mail;
 
 [ApiController]
 [Route("api/users")]
@@ -37,14 +37,33 @@ public class UsersController : Controller
         {
             return BadRequest(new ApiError("PICTURE_FORMAT","Picture must be in .jpg, .jpeg or .png format"));
         }
+        string username = userCreateProfile.Username.Trim().ToLower();
 
-        bool usernameExists = await _context.Users.AnyAsync(u => u.Username == userCreateProfile.Username);
+        bool usernameExists = await _context.Users.AnyAsync(u => u.Username == username);
         if (usernameExists)
         {
             return Conflict(new ApiError("USERNAME_TAKEN", "This username is already taken"));
         }
 
-        bool emailExists = await _context.Users.AnyAsync(u => u.Email == userCreateProfile.Email);
+        //source : https://learn.microsoft.com/en-us/dotnet/api/system.net.mail.mailaddress?view=net-10.0
+        //check if the mail given is actually a valid email 
+        bool isValidEmail;
+
+        try
+        {
+            MailAddress address = new MailAddress(email);
+            isValidEmail = address.Address == email;
+        }
+        catch (FormatException)
+        {
+            isValidEmail = false;
+        }
+        if (!isValidEmail)
+        {
+            return BadRequest(new ApiError("INVALID_EMAIL","Please provide a valid email address"));
+        }
+
+        bool emailExists = await _context.Users.AnyAsync(u => u.Email == email);
         if (emailExists)
         {
             return Conflict(new ApiError("EMAIL_TAKEN", "This email address is already taken"));
@@ -56,9 +75,9 @@ public class UsersController : Controller
         //create a user tntity to store in dbs
         var user = new User
         {
-            Username = userCreateProfile.Username,
+            Username = username,
             Name = userCreateProfile.Name,
-            Email = userCreateProfile.Email,
+            Email = email,
             Address = userCreateProfile.Address,
             Phone = userCreateProfile.Phone,
             PictureURL = DefaultProfilePicture,
@@ -96,6 +115,7 @@ public class UsersController : Controller
     public async Task<IActionResult> GetUserByUsername(string username)
     {
         //find user by username
+        username = username.Trim().ToLower();
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
     
         //return 404 iif user does not exist
@@ -148,7 +168,7 @@ public class UsersController : Controller
         //only change if its not taken cause these are meant to be unique (ref: Data/DBManager.cs)
         if (userUpdateProfile.Username != null)
         {
-            string newUsername = userUpdateProfile.Username;
+            string newUsername = userUpdateProfile.Username.Trim().ToLower() ;
             bool usernameTaken = await _context.Users.AnyAsync(u => u.Username == newUsername && u.Id != user.Id);
             if (usernameTaken)
             {
@@ -159,7 +179,7 @@ public class UsersController : Controller
 
         if (userUpdateProfile.Email != null)
         {
-            string newEmail = userUpdateProfile.Email;
+            string newEmail = userUpdateProfile.Email.Trim().ToLower();
             bool emailTaken = await _context.Users.AnyAsync(u => u.Email == newEmail && u.Id != user.Id);
             if (emailTaken)
             {
@@ -226,7 +246,7 @@ public class UsersController : Controller
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] UserLogin userLogin)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == userLogin.Username);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == userLogin.Username.Trim().ToLower());
 
         //hash the pw and use the same salt when user signed up
         if (user != null)

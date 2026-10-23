@@ -5,35 +5,43 @@ namespace BankApi.Data
 
     public class DBManager : DbContext
     {
+        //connects to sqlite database , store it in BankDB.db 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(@"Data Source = BankDB.db");
         }
+        //Each Db set is a table here and the columns is from its corresponding mdoel 
         public DbSet<User> Users { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //ensure username is unique 
             modelBuilder.Entity<User>()
                  .HasIndex(u => u.Username)
                  .IsUnique();
 
+            //emails must be unique 
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
 
+            // account numbers must be unique 
             modelBuilder.Entity<Account>()
                 .HasIndex(a => a.AccountNumber)
                 .IsUnique();
 
+            //one user can have many accounts, restirct means cant delte user w accounts 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Accounts)
                 .WithOne(a => a.User)
                 .HasForeignKey(a => a.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
+            //one account can have many transaction , account that has transaction cant be deleted 
             modelBuilder.Entity<Account>()
                 .HasMany(a => a.Transactions)
                 .WithOne(t => t.Account)
@@ -56,6 +64,7 @@ namespace BankApi.Data
             string[] names = { "Sarah", "Bob", "Ben", "Alice", "Matilda", "Grace", "John", "Clio", "Daniel", "Liam", "Steve", "Daisy", "Coco", "Faith", "Hazel", "Olivia", "Nathan", "Ashley", "Tiara", "Amy" };
 
             List<User> users = new List<User>();
+            //generate 20 difif users 
             for (int i = 1; i <= 20; i++)
             {
                 string name = names[i - 1];
@@ -75,8 +84,10 @@ namespace BankApi.Data
                 user.PasswordHash = HashingHelper.HashPassword("Password123", salt);
                 user.PasswordSalt = Convert.ToBase64String(salt);
                 user.IsActive = true;
+               
                 users.Add(user);
             }
+            //seed all the user into db 
             modelBuilder.Entity<User>().HasData(users);
 
             //fixed start date, so seed data is same evert run
@@ -152,7 +163,7 @@ namespace BankApi.Data
 
                 transactions.Add(transaction);
             }
-
+            //seed accounts and transactions into db 
             modelBuilder.Entity<Account>().HasData(accounts);
             modelBuilder.Entity<Transaction>().HasData(transactions);
         }

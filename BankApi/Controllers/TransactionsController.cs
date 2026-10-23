@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BankApi.Models;
 using BankApi.Data;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -33,6 +34,11 @@ public class TransactionsController : ControllerBase
     [HttpPost("deposit")]
     public async Task<ActionResult<TransactionView>> Deposit([FromBody] DepositWithdrawRequest request)
     {
+        if (request.Amount <= 0)
+        {
+
+            return BadRequest(new ApiError("BAD_REQUEST", "Transaction cannot be 0 or under"));
+        }
         if (decimal.Round(request.Amount, 2) != request.Amount)
         {
             return BadRequest(TooManyDecimals());
@@ -47,6 +53,7 @@ public class TransactionsController : ControllerBase
         }
         if (!account.IsActive || !account.User.IsActive)
         {
+
             return UnprocessableEntity(AccountInactive(account.AccountNumber));
         }
 

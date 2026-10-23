@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Log in Page";
+    string message = ViewBag.message;
+    string error = ViewBag.Error;
+}
+
+<h2>Login</h2>
+
+<div id="LoginForm">
+    @if(message != null)
+    {
+        <p>@message</p>
+    }
+
+    @if (error != null)
+    {
+        <p>@error</p>
+    }
+        
+
+    <form asp-controller="Auth" asp-action="Login" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="text" id="Username" name="Username" placeholder="User Name" />
+        <input type="password" id="Password" name="Password" placeholder="Password" autocomplete="current-password" />
+        <input type="submit" value="Login" />
+    </form>
+</div>
+
+<p>Don't have an account? <a href="/Auth/Register">Register</a> </p>

@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Register";
+    string error = ViewBag.Error;
+}
+
+<h2> Register Account </h2>
+
+<div id="RegistrationForm">
+    @if (error != null && error.Length > 0)
+    {
+        <p>@error</p>
+    }
+
+    @* ref source: https://learn.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-10.0 *@
+    @* enctype="multipart/form-data" for uploading picture file *@
+    <form action="/Auth/Register" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        
+        <input type="text" id="Username" name="Username" placeholder="User Name" />
+        <input type="text" id="Name" name="Name" placeholder="Name" />
+        <input type="text" id="Email" name="Email" placeholder="Email" />
+        <input type="text" id="Address" name="Address" placeholder="Address" />
+        <input type="text" id="Phone" name="Phone" placeholder="Phone" />
+        <input type="password" id="Password" name="Password" placeholder="Password" />
+
+        <p>Profile Picture (optional)</p>
+        <input type="file" id="Picture" name="Picture" accept=".jpg, .jpeg, .png" />
+
+        <input type="submit" value="Register">
+    </form>
+</div>
+
+<p>Already have an account? <a href="/Auth/Login">Login</a> </p>

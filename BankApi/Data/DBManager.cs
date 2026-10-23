@@ -29,6 +29,11 @@ namespace BankApi.Data
                 .HasIndex(u => u.Email)
                 .IsUnique();
 
+            modelBuilder.Entity<User>()
+                .Property(u => u.Role)
+                .HasDefaultValue("Customer");
+
+
             // account numbers must be unique 
             modelBuilder.Entity<Account>()
                 .HasIndex(a => a.AccountNumber)
@@ -84,6 +89,30 @@ namespace BankApi.Data
                 user.PasswordHash = HashingHelper.HashPassword("Password123", salt);
                 user.PasswordSalt = Convert.ToBase64String(salt);
                 user.IsActive = true;
+
+                user.Role = "Customer";
+                users.Add(user);
+            }
+
+            //seed one admin
+            byte[] adminSalt = new byte[16];
+            new Random(2).NextBytes(adminSalt);
+
+            User admin = new User();
+            admin.Id = 888;
+            admin.Username = "Admin";
+            admin.Name = "Administrator";
+            admin.Email = "admin@gmail.com";
+            admin.Address = "888 Road, Malaysia";
+            admin.Phone = "+6012000000888";
+            admin.PictureURL = "ProfilePictures/default.png";
+            admin.PasswordHash = HashingHelper.HashPassword("Admin123", adminSalt);
+            admin.PasswordSalt = Convert.ToBase64String(adminSalt);
+            admin.IsActive = true;
+
+            admin.Role = "Admin";
+            users.Add(admin);
+
                
                 users.Add(user);
             }

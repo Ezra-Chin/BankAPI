@@ -64,7 +64,7 @@ public class UsersController : Controller
             PictureURL = DefaultProfilePicture,
             PasswordHash = hashedPassword,
             PasswordSalt = Convert.ToBase64String(salt),
-            IsActive = true
+            IsActive = true,
 
             Role = "Customer";
         };
@@ -302,9 +302,9 @@ public class UsersController : Controller
             Address = user.Address,
             Phone = user.Phone,
             PictureURL = user.PictureURL,
-            IsActive = user.IsActive
+            IsActive = user.IsActive,
             
-            Role = user.Role;
+            Role = user.Role
         };
     }
 }

@@ -332,14 +332,9 @@ public class UsersController : Controller
         //set this as default
         string contentType = "image/png";
         
-        if (Path.GetExtension(path).ToLower() == ".jpeg")
+        if (Path.GetExtension(path).ToLower() == ".jpeg" || Path.GetExtension(path).ToLower() == ".jpg")
         {
             contentType = "image/jpeg";
-        }
-
-        if (Path.GetExtension(path).ToLower() == ".jpg")
-        {
-            contentType = "image/jpg";
         }
 
         //return image file to user using its full file path and content tpye

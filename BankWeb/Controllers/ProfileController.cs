@@ -112,7 +112,7 @@ namespace BankWeb.Controllers
 
                 ViewBag.Profile = current.Data;
             }
-            return RedirectToAction("Login");
+            return View();
         }
 
         //send login user pfp

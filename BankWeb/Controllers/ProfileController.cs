@@ -34,7 +34,7 @@ namespace BankWeb.Controllers
             if (!result.Success || result.Data == null)
             {
                 ViewBag.Error = result.ErrorMessage;
-                return View();
+                return;
             }
             else
             {
@@ -112,7 +112,7 @@ namespace BankWeb.Controllers
 
                 ViewBag.Profile = current.Data;
             }
-            return View();
+            return RedirectToAction("Login");
         }
 
         //send login user pfp

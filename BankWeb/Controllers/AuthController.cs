@@ -138,5 +138,15 @@ namespace BankWeb.Controllers
             //direct to Login page
             return RedirectToAction("Login");
         }
+
+        //prevent user trying to open a page they shouldn't be allowed to access
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            //403 Forbidden
+            Response.StatusCode = 403;
+            ViewBag.Code = 403;
+            return View("StatusCode");
+        }
     }
 }

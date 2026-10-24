@@ -101,7 +101,7 @@ namespace BankWeb.Controllers
                 else
                 {
                     //use error msg if hv, or else use the default msg
-                    ViewBag.Error = result.Error?.Message ?? "Username and Password are not matched. Please try again";
+                    ViewBag.Error = result.Error?.Message ?? "Username or Password are not matched. Please try again";
                 }
                 
                 return View(userLogin);

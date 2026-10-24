@@ -21,9 +21,9 @@ namespace BankWeb.Controllers
         private async Task LoadProfile()
         {
             //get username of the current user
-            if (user.Identity == null || user.Identity.Name == null)
+            if (User.Identity == null || User.Identity.Name == null)
             {
-                return Unauthorized();
+                return;
             }
             string username = User.Identity.Name;
 
@@ -63,7 +63,7 @@ namespace BankWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit (UserUpdateProfile userUpdateProfile)
         {
-            if (user.Identity == null || user.Identity.Name == null)
+            if (User.Identity == null || User.Identity.Name == null)
             {
                 return Unauthorized();
             }
@@ -85,7 +85,7 @@ namespace BankWeb.Controllers
                 error = "Please enter a valid email address";
             }
 
-            if (error == null)
+            if (string.IsNullOrEmpty(error))
             {
                 ApiResult<object> result = await _bankApiClient.UpdateUser(username, userUpdateProfile);
 
@@ -103,7 +103,7 @@ namespace BankWeb.Controllers
             ViewBag.Error = error;
             ApiResult<UserResponse> current = await _bankApiClient.GetUser(username);
 
-            if (current.Success && cureent.Data != null)
+            if (current.Success && current.Data != null)
             {
                 //keep what user wrote
                 current.Data.Email = userUpdateProfile.Email ?? "";
@@ -119,13 +119,13 @@ namespace BankWeb.Controllers
         [HttpGet]
         public async Task<IActionResult> ProfilePicture()
         {
-            if (user.Identity == null || user.Identity.Name == null)
+            if (User.Identity == null || User.Identity.Name == null)
             {
                 return Unauthorized();
             }
             string username = User.Identity.Name;
 
-            ApiResult<ProfilePictureFolder> result = await _bankApiClient.GetUserProfilePicture(username);
+            ApiResult<ProfilePictureFile> result = await _bankApiClient.GetUserProfilePicture(username);
 
             if (!result.Success || result.Data == null)
             {

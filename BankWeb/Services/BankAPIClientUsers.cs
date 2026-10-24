@@ -91,11 +91,11 @@ namespace BankWeb.Services
         }
 
         //get user pfp from Part A
-        public async Task<ApiResult<ProfilePictureFolder>> GetUserProfilePicture(string username)
+        public async Task<ApiResult<ProfilePictureFile>> GetUserProfilePicture(string username)
         {
-            var result = new ApiResult<ProfilePictureFolder>();
+            var result = new ApiResult<ProfilePictureFile>();
 
-            RestRequest restRequest = new RestRequest("api/users/{username}/profilepicture");
+            RestRequest restRequest = new RestRequest("api/users/{username}/picture");
             //replace {username} in request url with actual username
             restRequest.AddUrlSegment("username", username);
 
@@ -112,7 +112,7 @@ namespace BankWeb.Services
                     result.Success = true;
 
                     //store img and content type in pfpFile
-                    result.Data = new ProfilePictureFolder
+                    result.Data = new ProfilePictureFile
                     {
                         Bytes = restResponse.RawBytes,
                         ContentType = restResponse.ContentType ?? "image/png"

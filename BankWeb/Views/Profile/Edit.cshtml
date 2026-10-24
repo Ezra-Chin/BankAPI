@@ -7,14 +7,10 @@
 <h2>Edit Profile</h2>
 
 <div id="EditProfileForm">
-    @if (error != null && error.Length > 0)
-    {
-        <p>@error</p>
-    }
 
-    @if (profile != null)
+  @if (profile != null)
     {
-        <img src="/Profile/Picture" alt="Profile Picture" width ="150" height="150" style="object-fit:cover" />
+        <img src="/Profile/ProfilePicture" alt="Profile Picture" width ="150" height="150" style="object-fit:cover" />
 
         <p>Name: @profile.Name</p>
 
@@ -22,16 +18,16 @@
             @Html.AntiForgeryToken()
 
             <p>New Email</p>
-            <input type="email" id="Email" name="Email" placeholder="New Email" value="@profile.Email" />
+            <input type="email" id="Email" name="Email" placeholder="NewEmail" value="@profile.Email" />
 
             <p>New Address</p>
-            <input type="text" id="Address" name="Address" placeholder="New Address" value="@profile.Address" />
+            <input type="text" id="Address" name="Address" placeholder="NewAddress" value="@profile.Address" />
 
             <p>New Phone</p>
-            <input type="text" id="Phone" name="Phone" placeholder="New Phone" value="@profile.Phone" />
+            <input type="text" id="Phone" name="Phone" placeholder="NewPhone" value="@profile.Phone" />
 
             <p>New Password (Leave blank to keep old password)</p>
-            <input type="password" id="Password" name="Password" placeholder="New Password" autocomplete="new-password" />
+            <input type="password" id="Password" name="Password" placeholder="NewPassword" autocomplete="new-password" />
 
             <p>New Profile Picture</p>
             <input type="file" id="Picture" name="Picture" accept=".jpg, .jpeg, .png" />

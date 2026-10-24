@@ -310,6 +310,42 @@ public class UsersController : Controller
         return path;
     }
 
+    //GET api/users/"username"/picture
+    //send user pfp
+    [HttpGet("{username}/picture")]
+    public async Task<IActionResult> GetProfilePicture (string username)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+
+        if (user == null)
+        {
+            return NotFound(new ApiError("USER_NOT_FOUND", "User does not exist"));
+        }
+
+        //use default.png if user no upload
+        string path = user.PictureURL;
+        if (string.IsNullOrEmpty(path) || !System.IO.File.Exists(path))
+        {
+            path = DefaultProfilePicture;
+        }
+
+        //set this as default
+        string contentType = "image/png";
+        
+        if (Path.GetExtension(path).ToLower() == ".jpeg")
+        {
+            contentType = "image/jpeg";
+        }
+
+        if (Path.GetExtension(path).ToLower() == ".jpg")
+        {
+            contentType = "image/jpg";
+        }
+
+        //return image file to user using its full file path and content tpye
+        return PhysicalFile(Path.GetFullPath(path), contentType);
+    }
+
     //return all except for password hash & salt
     private static UserResponse uResponse (User user)
     {

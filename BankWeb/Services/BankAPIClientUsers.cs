@@ -59,10 +59,7 @@ namespace BankWeb.Services
             RestRequest restRequest = new RestRequest("api/users/{username}", Method.Put);
             restRequest.AddUrlSegment("username", username);
 
-            if (userUpdateProfile.Name != null)
-            {
-                restRequest.AddParameter("Name", userUpdateProfile.Name);
-            }
+            //spec mentioned change picture, contact details n pw
             if (userUpdateProfile.Email != null)
             {
                 restRequest.AddParameter("Email", userUpdateProfile.Email);
@@ -91,6 +88,47 @@ namespace BankWeb.Services
             }
 
             return Send<object>(restRequest);
+        }
+
+        //get user pfp from Part A
+        public async Task<ApiResult<ProfilePictureFolder>> GetUserProfilePicture(string username)
+        {
+            var result = new ApiResult<ProfilePictureFolder>();
+
+            RestRequest restRequest = new RestRequest("api/users/{username}/profilepicture");
+            //replace {username} in request url with actual username
+            restRequest.AddUrlSegment("username", username);
+
+            try
+            {
+                //send req to Part A and wait for response
+                RestResponse restResponse = await restClient.ExecuteAsync(restRequest);
+                //store status code that was returned by Part A
+                result.StatusCode = (int)restResponse.StatusCode;
+
+                //successful and got picture
+                if (restResponse.IsSuccessful && restResponse.RawBytes != null)
+                {
+                    result.Success = true;
+
+                    //store img and content type in pfpFile
+                    result.Data = new ProfilePictureFolder
+                    {
+                        Bytes = restResponse.RawBytes,
+                        ContentType = restResponse.ContentType ?? "image/png"
+                    };
+                }
+                else if (restResponse.StatusCode == 0)
+                {
+                    //failed to receive
+                    result.ServiceUnavailable = true;
+                }
+            }
+            catch (Exception)
+            {
+                result.ServiceUnavailable = true;
+            }
+            return result;
         }
     }
 }

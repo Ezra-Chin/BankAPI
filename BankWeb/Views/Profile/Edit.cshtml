@@ -7,13 +7,15 @@
 
 <div id="EditProfileForm">
 
-  @if (profile != null)
+    <div id="profileMessage"> </div>
+
+    @if (profile != null)
     {
-        <img src="/Profile/ProfilePicture" alt="Profile Picture" width ="150" height="150" style="object-fit:cover" />
+        <img id="profilePicture" src="/Profile/ProfilePicture" alt="Profile Picture" width="150" height="150" style="object-fit:cover" />
 
         <p>Name: @profile.Name</p>
 
-        <form action="/Profile/Edit" method="post" enctype="multipart/form-data">
+        <form id="profileForm" action="/Profile/Edit" method="post" enctype="multipart/form-data">
             @Html.AntiForgeryToken()
 
             <p>New Email</p>
@@ -31,9 +33,13 @@
             <p>New Profile Picture</p>
             <input type="file" id="Picture" name="Picture" accept=".jpg, .jpeg, .png" />
 
-            <input type="submit" value="Save" />
+            <input type="submit" id="saveButton" value="Save" />
         </form>
     }
 
     <p><a href="/Profile">Back to Profile</a> </p>
 </div>
+
+@section Scripts {
+    <script src="~/js/profile.js" asp-append-version="true"> </script>
+}

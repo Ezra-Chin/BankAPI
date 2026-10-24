@@ -115,6 +115,47 @@ namespace BankWeb.Controllers
             return View();
         }
 
+
+        //caled by profile.js using fetch, save changes without needing to reload the page
+        [HttpPost]
+        public async Task<IActionResult> Save (UserUpdateProfile userUpdateProfile)
+        {
+            if (User.Identity == null || User.Identity.Name == null)
+            {
+                return Unauthorized();
+            }
+            string username = User.Identity.Name;
+
+            userUpdateProfile.Username = null;
+            userUpdateProfile.Name = null;
+
+            if (string.IsNullOrEmpty(userUpdateProfile.Email) || string.IsNullOrEmpty(userUpdateProfile.Address) || string.IsNullOrEmpty(userUpdateProfile.Phone))
+            {
+                return Json(new {
+                    success = false, message = "Email, Address and Phone must not be empty"
+                }); 
+            }
+            else if (!userUpdateProfile.Email.Contains("@"))
+            {
+                return Json(new {
+                    success = false, message = "Please enter a valid email address"
+                });
+            }
+
+            ApiResult<object> result = await _bankApiClient.UpdateUser(username, userUpdateProfile);
+
+            if (!result.Success)
+            {
+                return Json(new {
+                    success = false, message = result.ErrorMessage
+                });
+            }
+
+            return Json(new {
+                success = true, message = "Your profile has been updated"
+            });
+        }
+
         //send login user pfp
         [HttpGet]
         public async Task<IActionResult> ProfilePicture()

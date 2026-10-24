@@ -4,14 +4,10 @@ function saveProfile()
     var data = new FormData(document.getElementById('profileForm'));
     const apiUrl = '/Profile/Save';
 
-    const headers = { 
-        //anti-forgery token
-        'RequestVerificationToken' : document.getElementById('requestToken').value
-    }
+
 
     const requestOptions = {
         method: 'POST',
-        headers: headers,
         body: data
     };
 

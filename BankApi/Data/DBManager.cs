@@ -1,4 +1,5 @@
 ﻿using BankApi.Models;
+using BankWeb.Models;
 using Microsoft.EntityFrameworkCore;
 namespace BankApi.Data
 {
@@ -14,6 +15,8 @@ namespace BankApi.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+
+        public DbSet<AuditEntry> AuditEntry { get; set; }
 
 
 
@@ -100,7 +103,7 @@ namespace BankApi.Data
 
             User admin = new User();
             admin.Id = 888;
-            admin.Username = "Admin";
+            admin.Username = "admin";
             admin.Name = "Administrator";
             admin.Email = "admin@gmail.com";
             admin.Address = "888 Road, Malaysia";
@@ -114,8 +117,7 @@ namespace BankApi.Data
             users.Add(admin);
 
                
-                users.Add(user);
-            }
+            
             //seed all the user into db 
             modelBuilder.Entity<User>().HasData(users);
 

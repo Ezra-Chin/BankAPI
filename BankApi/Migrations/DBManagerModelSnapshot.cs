@@ -4929,6 +4929,12 @@ namespace BankApi.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValue("Customer");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -4955,6 +4961,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "RtCGgkCX5KOVz/9GaZxzxA==",
                             Phone = "+60120000001",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "sarah"
                         },
                         new
@@ -4968,6 +4975,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "oc0QNBNbTqNvhKVK33oOoA==",
                             Phone = "+60120000002",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "bob"
                         },
                         new
@@ -4981,6 +4989,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "nOPBF2zkjoJOAiG+DztTWA==",
                             Phone = "+60120000003",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "ben"
                         },
                         new
@@ -4994,6 +5003,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "8KMoGEvpkeuB4xK88ZrEGg==",
                             Phone = "+60120000004",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "alice"
                         },
                         new
@@ -5007,6 +5017,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "wV6phtpbV70/juYQOY+TNA==",
                             Phone = "+60120000005",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "matilda"
                         },
                         new
@@ -5020,6 +5031,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "ME1aPFL2VbNR1pWJ0dKQtA==",
                             Phone = "+60120000006",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "grace"
                         },
                         new
@@ -5033,6 +5045,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "Pgf9sZLNfZRLa9m9A4Cx8g==",
                             Phone = "+60120000007",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "john"
                         },
                         new
@@ -5046,6 +5059,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "T96LpD+Hx8oI9jQExs7sbQ==",
                             Phone = "+60120000008",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "clio"
                         },
                         new
@@ -5059,6 +5073,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "/TLSMZLioWPPxfDnHZiv0Q==",
                             Phone = "+60120000009",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "daniel"
                         },
                         new
@@ -5072,6 +5087,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "JaM68kbsdLc/MqibmHnOfQ==",
                             Phone = "+601200000010",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "liam"
                         },
                         new
@@ -5085,6 +5101,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "f2u/0a5/X2w8KNR6luCtcA==",
                             Phone = "+601200000011",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "steve"
                         },
                         new
@@ -5098,6 +5115,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "RmPfIpP5JxC9GvJfOgbKVg==",
                             Phone = "+601200000012",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "daisy"
                         },
                         new
@@ -5111,6 +5129,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "93NnsdjeIqVDzrUdGPkgXg==",
                             Phone = "+601200000013",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "coco"
                         },
                         new
@@ -5124,6 +5143,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "hTdUNZqs6oVErxOTjf8xNg==",
                             Phone = "+601200000014",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "faith"
                         },
                         new
@@ -5137,6 +5157,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "Xn2CI3j8mGhAOd7FRAn4xA==",
                             Phone = "+601200000015",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "hazel"
                         },
                         new
@@ -5150,6 +5171,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "+pPaA7GVvEuJ4mwpy48XRA==",
                             Phone = "+601200000016",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "olivia"
                         },
                         new
@@ -5163,6 +5185,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "nH6+mnf95Ymf7PRgzSVAOw==",
                             Phone = "+601200000017",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "nathan"
                         },
                         new
@@ -5176,6 +5199,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "tk+Z+iUuhMnBN5qWj2+csQ==",
                             Phone = "+601200000018",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "ashley"
                         },
                         new
@@ -5189,6 +5213,7 @@ namespace BankApi.Migrations
                             PasswordSalt = "IpooxUteTf2tUWTEoFt9ZA==",
                             Phone = "+601200000019",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "tiara"
                         },
                         new
@@ -5202,8 +5227,49 @@ namespace BankApi.Migrations
                             PasswordSalt = "oTFyfPYdHm769dg/Yk/5Lw==",
                             Phone = "+601200000020",
                             PictureURL = "ProfilePictures/default.png",
+                            Role = "Customer",
                             Username = "amy"
+                        },
+                        new
+                        {
+                            Id = 888,
+                            Address = "888 Road, Malaysia",
+                            Email = "admin@gmail.com",
+                            IsActive = true,
+                            Name = "Administrator",
+                            PasswordHash = "5drh5bZ2pnHOT/t1Bj1XD5IDFP/YQLYi3T/lEFE4U7IHoWBVCZMewuJ+uLmoJwVk9EwjS2ZxA1QIumVcxWiAEg==",
+                            PasswordSalt = "cZPGlSS54298OJi33SALwQ==",
+                            Phone = "+6012000000888",
+                            PictureURL = "ProfilePictures/default.png",
+                            Role = "Admin",
+                            Username = "admin"
                         });
+                });
+
+            modelBuilder.Entity("BankWeb.Models.AuditEntry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AdminUsername")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AuditEntry");
                 });
 
             modelBuilder.Entity("BankApi.Models.Account", b =>

@@ -258,18 +258,18 @@ namespace BankWeb.Controllers
             if (from != null && to != null && from > to)
             {
                 ViewBag.Error = "The 'From' date must be on or before the 'To' date.";
-                return PartialView("_TransactionsTable", model);
+                return PartialView("TransactionsTableView", model);
             }
 
             var result = await _api.GetAllTransactions(model.Filter);
             if (!result.Success || result.Data == null)
             {
                 ViewBag.Error = result.ErrorMessage;
-                return PartialView("_TransactionsTable", model);
+                return PartialView("TransactionsTableView", model);
             }
 
             model.Result = result.Data;
-            return PartialView("_TransactionsTable", model);
+            return PartialView("TransactionsTableView", model);
         }
 
         //GET /Admin/AuditTrail  (page shell, the table is loaded by admin.js)
@@ -287,9 +287,9 @@ namespace BankWeb.Controllers
             if (!result.Success || result.Data == null)
             {
                 ViewBag.Error = result.ErrorMessage;
-                return PartialView("_AuditTable", new PagedResult<AuditEntry>());
+                return PartialView("AuditTableView", new PagedResult<AuditEntry>());
             }
-            return PartialView("_AuditTable", result.Data);
+            return PartialView("AuditTableView", result.Data);
         }
 
         //every admin action calls this: BankWeb -> BankApiClient -> POST api/audit -> database

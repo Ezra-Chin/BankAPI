@@ -7,10 +7,7 @@
 <div id="TransactionFilters">
     <div>
         <label for="searchText">Search</label>
-        <input type="text"
-               id="searchText"
-               name="searchText"
-               placeholder="Username, account no. or description" />
+        <input type="text" id="searchText" name="searchText" placeholder="Username, account no. or description" />
     </div>
 
     <div>
@@ -35,22 +32,13 @@
     </div>
 
     <div>
-        <button type="button"
-                id="FilterButton"
-                onclick="filterTransactions()">
-            Filter
-        </button>
-
-        <button type="button"
-                id="ClearButton"
-                onclick="clearTransactionFilter()">
-            Clear
-        </button>
+        <button type="button" id="FilterButton" onclick="filterTransactions()">Filter</button>
+        <button type="button" id="ClearButton" onclick="clearTransactionFilter()">Clear</button>
     </div>
 </div>
 
 <div id="adminTransactions">
-    <p>Loading transactions…</p>
+    <p>Loading transactions...</p>
 </div>
 
 <script src="~/js/admin.js"></script>

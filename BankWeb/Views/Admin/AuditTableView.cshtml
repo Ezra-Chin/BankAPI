@@ -3,53 +3,50 @@
     string error = ViewBag.Error;
 }
 
-@if (error != null && error.Length > 0)
-{
-    <div class="alert alert-danger">@error</div>
-}
+<div id="AuditList">
 
-<div class="table-responsive">
-    <table class="table table-hover align-middle">
-        <thead>
+    @if (error != null && error.Length > 0)
+    {
+        <p id="AuditError">@error</p>
+    }
+
+    <table>
+        <tr>
+            <th>When</th>
+            <th>Admin</th>
+            <th>Action</th>
+            <th>Details</th>
+        </tr>
+
+        @foreach (AuditEntry a in Model.Items)
+        {
             <tr>
-                <th>When</th>
-                <th>Admin</th>
-                <th>Action</th>
-                <th>Details</th>
+                <td>@a.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm:ss")</td>
+                <td>@a.AdminUsername</td>
+                <td>@a.Action</td>
+                <td>@a.Details</td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var a in Model.Items)
-            {
-                <tr>
-                    <td>@a.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm:ss")</td>
-                    <td>@a.AdminUsername</td>
-                    <td><span class="badge bg-secondary">@a.Action</span></td>
-                    <td>@a.Details</td>
-                </tr>
-            }
+        }
 
-            @if (Model.Items.Count == 0 && (error == null || error.Length == 0))
-            {
-                <tr><td colspan="4" class="text-muted text-center">No admin actions recorded yet.</td></tr>
-            }
-        </tbody>
+        @if (Model.Items.Count == 0 && (error == null || error.Length == 0))
+        {
+            <tr><td colspan="4">No admin actions recorded yet.</td></tr>
+        }
     </table>
-</div>
 
-@if (Model.TotalPages > 0)
-{
-    <div id="AuditPager" class="d-flex justify-content-between align-items-center">
-        <span class="text-muted small">Page @Model.Page of @Model.TotalPages (@Model.TotalCount records)</span>
-        <div>
+    @if (Model.TotalPages > 0)
+    {
+        <div id="AuditPager">
+            <p>Page @Model.Page of @Model.TotalPages (@Model.TotalCount records)</p>
             @if (Model.Page > 1)
             {
-                <button type="button" onclick="goToPage(@(Model.Page - 1))" class="btn btn-sm btn-outline-primary">Previous</button>
+                <button type="button" onclick="goToPage(@(Model.Page - 1))">Previous</button>
             }
             @if (Model.Page < Model.TotalPages)
             {
-                <button type="button" onclick="goToPage(@(Model.Page + 1))" class="btn btn-sm btn-outline-primary">Next</button>
+                <button type="button" onclick="goToPage(@(Model.Page + 1))">Next</button>
             }
         </div>
-    </div>
-}
+    }
+
+</div>

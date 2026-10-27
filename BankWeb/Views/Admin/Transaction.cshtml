@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "All transactions";
+}
+
+<h1>All transactions</h1>
+
+<div id="TransactionFilters">
+    <div>
+        <label for="searchText">Search</label>
+        <input type="text"
+               id="searchText"
+               name="searchText"
+               placeholder="Username, account no. or description" />
+    </div>
+
+    <div>
+        <label for="typeFilter">Type</label>
+        <select id="typeFilter" name="typeFilter">
+            <option value="">All types</option>
+            <option value="Deposit">Deposit</option>
+            <option value="Withdrawal">Withdrawal</option>
+            <option value="TransferIn">Transfer in</option>
+            <option value="TransferOut">Transfer out</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="fromDate">From</label>
+        <input type="date" id="fromDate" name="fromDate" />
+    </div>
+
+    <div>
+        <label for="toDate">To</label>
+        <input type="date" id="toDate" name="toDate" />
+    </div>
+
+    <div>
+        <button type="button"
+                id="FilterButton"
+                onclick="filterTransactions()">
+            Filter
+        </button>
+
+        <button type="button"
+                id="ClearButton"
+                onclick="clearTransactionFilter()">
+            Clear
+        </button>
+    </div>
+</div>
+
+<div id="adminTransactions">
+    <p>Loading transactions…</p>
+</div>
+
+<script src="~/js/admin.js"></script>

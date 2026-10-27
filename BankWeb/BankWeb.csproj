@@ -11,8 +11,4 @@
     <PackageReference Include="RestSharp" Version="114.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Admin\" />
-  </ItemGroup>
-
 </Project>

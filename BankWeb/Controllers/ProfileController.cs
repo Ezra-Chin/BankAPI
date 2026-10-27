@@ -12,7 +12,7 @@ namespace BankWeb.Controllers
     public class ProfileController : Controller
     {
 
-    }
+    
         private readonly BankApiClient _bankApiClient;
 
         public ProfileController (BankApiClient bankApiClient)

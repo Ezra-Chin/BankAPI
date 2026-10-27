@@ -23,6 +23,43 @@ public class UsersController : Controller
         _context = context;
     }
 
+
+    // GET api/users?search=name
+    [HttpGet]
+    public async Task<ActionResult<PagedResult<UserResponse>>> GetUsers([FromQuery] string? search)
+    {
+        //i name it us cz users keeps autocorrect to another word and its getting annoying 
+        //start the serach query (As queryable allows us to add filters before adding query being executed) 
+        var us = _context.Users.Include(u => u.Accounts).AsQueryable();
+
+        //mkae sure search inst null
+        if (search != null && search != "")
+        {
+
+            //make it lweor case and trimmed first 
+            search = search.Trim().ToLower();
+            //get userse where username or name or accoutn number is equals to the search 
+            us = us.Where(u => u.Name.ToLower().Contains(search) || u.Username.Contains(search) || u.Accounts.Any(a => a.AccountNumber.ToLower() == search));
+        }
+        //sort by alphabetical order 
+        var res = await us.OrderBy(u => u.Name).ToListAsync();
+        //converst fetch users into user response 
+        var result = res.Select(u => new UserResponse
+        {
+            Id = u.Id,
+            Username = u.Username,
+            Name = u.Name,
+            Email = u.Email,
+            Address = u.Address,
+            Phone = u.Phone,
+            PictureURL = u.PictureURL,
+            IsActive = u.IsActive,
+
+            Role = u.Role
+        });
+        return Ok(result);
+    }
+
     // POST api/users
     //register new user
     [HttpPost]
@@ -154,7 +191,7 @@ public class UsersController : Controller
     public async Task<IActionResult> Update(string username, [FromForm] UserUpdateProfile userUpdateProfile)
     {
         //find user by username
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username.Trim().ToLower());
     
         //return 404 iif user does not exist
         if (user == null)
@@ -238,6 +275,23 @@ public class UsersController : Controller
         }
 
         user.IsActive = false;
+        await _context.SaveChangesAsync();
+        //will return 204
+        return NoContent();
+    }
+
+    //activate user acc
+    //PATCH api/users/"username"/activate
+    [HttpPatch("{username}/activate")]
+    public async Task<IActionResult> ActivateAccount(string username)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        if (user == null)
+        {
+            return NotFound(new ApiError("USER_NOT_FOUND", "User does not exist"));
+        }
+
+        user.IsActive = true;
         await _context.SaveChangesAsync();
         //will return 204
         return NoContent();

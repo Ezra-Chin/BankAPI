@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using BankApi.Models;
 using BankApi.Data;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Data.SqlClient;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -14,6 +15,91 @@ public class TransactionsController : ControllerBase
     public TransactionsController(DBManager context)
     {
         _context = context;
+    }
+
+
+    [HttpGet]
+    public async Task<ActionResult<PagedResult<TransactionView>>> GetTransactions([FromQuery] DateTime? from,[FromQuery] string? search,   [FromQuery] DateTime? to,  [FromQuery] string? type, [FromQuery] int page = 1 , [FromQuery] int pageSize = 10, [FromQuery] string sortBy = "date" , [FromQuery] string sortOrder = "descending")
+    {
+        if (page < 1 )
+        {
+            page = 1;
+        }
+        if (pageSize < 1)
+        {
+            pageSize = 10;
+        }
+        var transactions = _context.Transactions.AsQueryable();
+
+        if (from != null)
+        {
+            transactions = transactions.Where(t => t.CreatedAt >= from.Value);
+        }
+        if (to != null)
+        {
+            transactions = transactions.Where(t => t.CreatedAt <= to.Value);
+
+        }
+
+        if (!string.IsNullOrWhiteSpace(type))
+        {
+            transactions = transactions.Where(t => t.Type == type);
+        }
+
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            var s = search.Trim().ToLower();
+            transactions = transactions.Where(t => t.Description.ToLower().Contains(s) || t.Account.AccountNumber.ToLower().Contains(s) || (t.RelatedAccount != null && t.RelatedAccount.AccountNumber.ToLower().Contains(s)) || t.Account.User.Username.ToLower().Contains(s));
+        }
+
+
+        if (sortBy == "amount")
+        {
+            if (sortOrder == "ascending")
+            {
+                transactions = transactions.OrderBy(t => (double)t.Amount);
+
+            }
+            else
+            {
+                transactions = transactions.OrderByDescending(t => (double)t.Amount);
+            }
+        }
+        else  
+        {
+            if (sortOrder == "ascending")
+            {
+                transactions = transactions.OrderBy(t => t.CreatedAt);
+
+            }
+            else
+            {
+                transactions = transactions.OrderByDescending(t => t.CreatedAt);
+
+            }
+        }
+
+        var result = new PagedResult<TransactionView>
+        {
+            TotalCount = await transactions.CountAsync(),
+            Page = page,
+            PageSize = pageSize,
+
+            Items = await transactions.Skip((page - 1 ) * pageSize ).Take(pageSize).Select(t => new TransactionView
+            {
+                Id = t.Id,
+                Type = t.Type,
+                Amount = t.Amount,
+                Description = t.Description,
+                CreatedAt = t.CreatedAt,
+                AccountNumber = t.Account.AccountNumber,
+                Username = t.Account.User.Username,
+                RelatedAccountNumber = t.RelatedAccount != null ? t.RelatedAccount.AccountNumber : null
+
+            }).ToListAsync()
+        };
+        return Ok(result);
+    
     }
 
     [HttpGet("{id}")]

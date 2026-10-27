@@ -35,8 +35,11 @@ public class UsersController : Controller
         //mkae sure search inst null
         if (search != null && search != "")
         {
+
+            //make it lweor case and trimmed first 
+            search = search.Trim().ToLower();
             //get userse where username or name or accoutn number is equals to the search 
-            us = us.Where(u => u.Name.Contains(search) || u.Username.Contains(search) || u.Accounts.Any(a => a.AccountNumber == search));
+            us = us.Where(u => u.Name.ToLower().Contains(search) || u.Username.Contains(search) || u.Accounts.Any(a => a.AccountNumber.ToLower() == search));
         }
         //sort by alphabetical order 
         var res = await us.OrderBy(u => u.Name).ToListAsync();

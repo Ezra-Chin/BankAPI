@@ -33,11 +33,11 @@ public class TransactionsController : ControllerBase
 
         if (from != null)
         {
-            transactions = transactions.Where(t => t.CreatedAt >= from);
+            transactions = transactions.Where(t => t.CreatedAt >= from.Value);
         }
         if (to != null)
         {
-            transactions = transactions.Where(t => t.CreatedAt <= to);
+            transactions = transactions.Where(t => t.CreatedAt <= to.Value);
 
         }
 
@@ -49,7 +49,7 @@ public class TransactionsController : ControllerBase
         if (!string.IsNullOrWhiteSpace(search))
         {
             var s = search.Trim().ToLower();
-            transactions = transactions.Where(t => t.Description.ToLower().Contains(s) || t.Account.AccountNumber.Contains(s) || (t.RelatedAccount != null && t.RelatedAccount.AccountNumber.Contains(s)) || t.Account.User.Username.ToLower().Contains(s));
+            transactions = transactions.Where(t => t.Description.ToLower().Contains(s) || t.Account.AccountNumber.ToLower().Contains(s) || (t.RelatedAccount != null && t.RelatedAccount.AccountNumber.ToLower().Contains(s)) || t.Account.User.Username.ToLower().Contains(s));
         }
 
 
@@ -57,12 +57,12 @@ public class TransactionsController : ControllerBase
         {
             if (sortOrder == "ascending")
             {
-                transactions = transactions.OrderBy(t => t.Amount);
+                transactions = transactions.OrderBy(t => (double)t.Amount);
 
             }
             else
             {
-                transactions = transactions.OrderByDescending(t => t.Amount);
+                transactions = transactions.OrderByDescending(t => (double)t.Amount);
             }
         }
         else  

@@ -38,11 +38,11 @@ namespace BankWeb.Services
 
 
         //reactivate a user account
-        //PATCH /api/users/{username}/reactivate
+        //PATCH /api/users/{username}/activate
         public Task<ApiResult<object>> ReactivateUser(string Username)
         {
            
-            RestRequest restRequest = new RestRequest("api/users/{username}/reactivate", Method.Patch);
+            RestRequest restRequest = new RestRequest("api/users/{username}/activate", Method.Patch);
             //shove Username insdie {username} 
             restRequest.AddUrlSegment("username", Username);
             //send the request and reutrns the <object> 

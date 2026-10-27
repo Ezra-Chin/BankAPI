@@ -1,0 +1,102 @@
+﻿@model List<UserResponse>
+@{
+    ViewData["Title"] = "Users";
+    string search = ViewBag.Search;
+    string myUsername = User.Identity?.Name ?? "";
+}
+
+<h1>Users</h1>
+
+<p>
+    <a href="/Admin/CreateUser">Create user</a>
+</p>
+
+<div id="SearchForm">
+    <form action="/Admin/Users" method="get">
+        <input type="text"
+               id="search"
+               name="search"
+               value="@search"
+               placeholder="Name, username or account number" />
+
+        <input type="submit" value="Search" />
+
+        <a href="/Admin/Users">Clear</a>
+    </form>
+</div>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var u in Model)
+            {
+                <tr>
+                    <td>@u.Username</td>
+                    <td>@u.Name</td>
+                    <td>@u.Email</td>
+                    <td>@u.Phone</td>
+                    <td>@u.Role</td>
+
+                    <td>
+                        @if (u.IsActive)
+                        {
+                            <span>Active</span>
+                        }
+                        else
+                        {
+                            <span>Deactivated</span>
+                        }
+                    </td>
+
+                    <td>
+                        <a href="/Admin/EditUser/@u.Username">Edit</a>
+
+                        @if (u.Username != myUsername)
+                        {
+                            if (u.IsActive)
+                            {
+                                <form action="/Admin/Deactivate/@u.Username"
+                                      method="post"
+                                      onsubmit="return confirm('Deactivate this user?');">
+
+                                    @Html.AntiForgeryToken()
+
+                                    <input type="submit" value="Deactivate" />
+                                </form>
+                            }
+                            else
+                            {
+                                <form action="/Admin/Activate/@u.Username"
+                                      method="post">
+
+                                    @Html.AntiForgeryToken()
+
+                                    <input type="submit" value="Activate" />
+                                </form>
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+
+            @if (Model.Count == 0)
+            {
+                <tr>
+                    <td colspan="7">No users found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

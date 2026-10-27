@@ -1,0 +1,78 @@
+﻿@model TransactionHistoryViewModel
+@{
+    string error = ViewBag.Error;
+    var filter = Model.Filter;
+    var result = Model.Result;
+
+    string dateArrow = "";
+    string typeArrow = "";
+    string amountArrow = "";
+    string arrow = filter.SortDir == "asc" ? " ▲" : " ▼";
+    if (filter.SortBy == "date") { dateArrow = arrow; }
+    if (filter.SortBy == "type") { typeArrow = arrow; }
+    if (filter.SortBy == "amount") { amountArrow = arrow; }
+}
+
+@if (error != null && error.Length > 0)
+{
+    <div class="alert alert-danger">@error</div>
+}
+
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead>
+            <tr>
+                <th><button type="button" onclick="sortTransactions('date')" class="btn btn-link p-0 fw-bold">Date@dateArrow</button></th>
+                <th>User</th>
+                <th>Account</th>
+                <th><button type="button" onclick="sortTransactions('type')" class="btn btn-link p-0 fw-bold">Type@typeArrow</button></th>
+                <th>Description</th>
+                <th>Other account</th>
+                <th class="text-end"><button type="button" onclick="sortTransactions('amount')" class="btn btn-link p-0 fw-bold">Amount@amountArrow</button></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in result.Items)
+            {
+                <tr>
+                    <td>@t.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@t.Username</td>
+                    <td>@t.AccountNumber</td>
+                    <td>@t.Type</td>
+                    <td>@t.Description</td>
+                    <td>@(t.RelatedAccountNumber == null ? "-" : t.RelatedAccountNumber)</td>
+                    @if (t.IsCredit)
+                    {
+                        <td class="text-end money-in">+@t.Amount.ToString("C")</td>
+                    }
+                    else
+                    {
+                        <td class="text-end money-out">-@t.Amount.ToString("C")</td>
+                    }
+                </tr>
+            }
+
+            @if (result.Items.Count == 0 && (error == null || error.Length == 0))
+            {
+                <tr><td colspan="7" class="text-muted text-center">No transactions match these filters.</td></tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (result.TotalPages > 0)
+{
+    <div id="TransactionPager" class="d-flex justify-content-between align-items-center">
+        <span class="text-muted small">Page @result.Page of @result.TotalPages (@result.TotalCount records)</span>
+        <div>
+            @if (result.Page > 1)
+            {
+                <button type="button" onclick="goToPage(@(result.Page - 1))" class="btn btn-sm btn-outline-primary">Previous</button>
+            }
+            @if (result.Page < result.TotalPages)
+            {
+                <button type="button" onclick="goToPage(@(result.Page + 1))" class="btn btn-sm btn-outline-primary">Next</button>
+            }
+        </div>
+    </div>
+}

@@ -35,9 +35,17 @@ public class TransactionsController : ControllerBase
         {
             transactions = transactions.Where(t => t.CreatedAt >= from.Value);
         }
+
         if (to != null)
         {
-            transactions = transactions.Where(t => t.CreatedAt <= to.Value);
+            //if the to date has no time, then include the entire day 
+            if(to.Value.TimeOfDay == TimeSpan.Zero)
+            {
+                //including the entire day by extending the extra day
+                to = to.Value.AddDays(1);
+            }
+           //filter it futher to only the trans before to 
+            transactions = transactions.Where(t => t.CreatedAt < to.Value);
 
         }
 
@@ -52,10 +60,11 @@ public class TransactionsController : ControllerBase
             transactions = transactions.Where(t => t.Description.ToLower().Contains(s) || t.Account.AccountNumber.ToLower().Contains(s) || (t.RelatedAccount != null && t.RelatedAccount.AccountNumber.ToLower().Contains(s)) || t.Account.User.Username.ToLower().Contains(s));
         }
 
-
+        //if sort Order is asc or ascending ,then its true, else false 
+        bool ascending = sortOrder == "asc" || sortOrder == "ascending";
         if (sortBy == "amount")
         {
-            if (sortOrder == "ascending")
+            if (ascending)
             {
                 transactions = transactions.OrderBy(t => (double)t.Amount);
 
@@ -65,9 +74,22 @@ public class TransactionsController : ControllerBase
                 transactions = transactions.OrderByDescending(t => (double)t.Amount);
             }
         }
+        else if (sortBy == "type"){
+            if (ascending)
+            {
+                transactions = transactions.OrderBy(t => t.Type);
+
+            }
+            else
+            {
+                transactions = transactions.OrderByDescending(t => t.Type);
+
+
+            }
+        }
         else  
         {
-            if (sortOrder == "ascending")
+            if (ascending   )
             {
                 transactions = transactions.OrderBy(t => t.CreatedAt);
 

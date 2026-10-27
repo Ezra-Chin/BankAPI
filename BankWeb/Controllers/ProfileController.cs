@@ -11,5 +11,6 @@ namespace BankWeb.Controllers
     [Authorize]
     public class ProfileController : Controller
     {
+
     }
 }

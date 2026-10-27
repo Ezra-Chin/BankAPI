@@ -1,16 +1,11 @@
 @{
     ViewData["Title"] = "Register";
-    string error = ViewBag.Error;
 }
 
 <h2> Register Account </h2>
 
 <div id="RegistrationForm">
-    @if (error != null && error.Length > 0)
-    {
-        <p>@error</p>
-    }
-
+    
     @* ref source: https://learn.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-10.0 *@
     @* enctype="multipart/form-data" for uploading picture file *@
     <form action="/Auth/Register" method="post" enctype="multipart/form-data">

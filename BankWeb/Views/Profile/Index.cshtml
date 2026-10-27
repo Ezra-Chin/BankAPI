@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "My Profile";
+    UserResponse? profile = ViewBag.Profile;
+}
+
+<h2>My Profile</h2>
+
+<div id="Profile">
+
+    @if (profile != null)
+    {
+        <img src="/Profile/ProfilePicture" alt="Profile Picture" width ="150" height="150" style="object-fit:cover" />
+
+        <p>Name: @profile.Name</p>
+        <p>Username: @profile.Username</p>
+        <p>Email: @profile.Email</p>
+        <p>Address: @profile.Address</p>
+        <p>Phone: @profile.Phone</p>
+
+        <a href="/Profile/Edit">Edit Profile</a>
+    }
+</div>

@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Edit Profile";
+    UserResponse? profile = ViewBag.Profile;
+}
+
+<h2>Edit Profile</h2>
+
+<div id="EditProfileForm">
+
+    <div id="profileMessage"> </div>
+
+    @if (profile != null)
+    {
+        <img id="profilePicture" src="/Profile/ProfilePicture" alt="Profile Picture" width="150" height="150" style="object-fit:cover" />
+
+        <p>Name: @profile.Name</p>
+
+        <form id="profileForm" action="/Profile/Edit" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+
+            <p>New Email</p>
+            <input type="email" id="Email" name="Email" placeholder="New Email" value="@profile.Email" />
+
+            <p>New Address</p>
+            <input type="text" id="Address" name="Address" placeholder="New Address" value="@profile.Address" />
+
+            <p>New Phone</p>
+            <input type="text" id="Phone" name="Phone" placeholder="New Phone" value="@profile.Phone" />
+
+            <p>New Password (Leave blank to keep old password)</p>
+            <input type="password" id="Password" name="Password" placeholder="New Password" autocomplete="new-password" />
+
+            <p>New Profile Picture</p>
+            <input type="file" id="Picture" name="Picture" accept=".jpg, .jpeg, .png" />
+
+            <button type="button" id="saveButton" onclick="saveProfile()">Save</button>
+        </form>
+    }
+
+    <p><a href="/Profile">Back to Profile</a> </p>
+</div>
+
+@section Scripts {
+    <script src="~/js/profile.js" asp-append-version="true"> </script>
+}

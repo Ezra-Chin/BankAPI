@@ -61,8 +61,8 @@ namespace BankWeb.Controllers
             }
 
             //registration succeeded, go to login page
-            ViewBag.Message = "Registration Successful. You can login now";
-            return View("Login");
+            TempData["Success"] = "Registration Successful. You can login now";
+            return RedirectToAction("Login");
         }
 
         //show login page, if user edy logged in, direct them to the logged in page instead
@@ -101,7 +101,7 @@ namespace BankWeb.Controllers
                 else
                 {
                     //use error msg if hv, or else use the default msg
-                    ViewBag.Error = result.Error?.Message ?? "Username and Password are not matched. Please try again";
+                    ViewBag.Error = result.Error?.Message ?? "Username or Password is incorrect. Please try again";
                 }
                 
                 return View(userLogin);
@@ -137,6 +137,16 @@ namespace BankWeb.Controllers
 
             //direct to Login page
             return RedirectToAction("Login");
+        }
+
+        //prevent user trying to open a page they shouldn't be allowed to access
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            //403 Forbidden
+            Response.StatusCode = 403;
+            ViewBag.Code = 403;
+            return View("StatusCode");
         }
     }
 }

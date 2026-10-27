@@ -100,7 +100,7 @@ namespace BankApi.Data
 
             User admin = new User();
             admin.Id = 888;
-            admin.Username = "Admin";
+            admin.Username = "admin";
             admin.Name = "Administrator";
             admin.Email = "admin@gmail.com";
             admin.Address = "888 Road, Malaysia";
@@ -113,9 +113,6 @@ namespace BankApi.Data
             admin.Role = "Admin";
             users.Add(admin);
 
-               
-                users.Add(user);
-            }
             //seed all the user into db 
             modelBuilder.Entity<User>().HasData(users);
 

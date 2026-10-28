@@ -60,6 +60,15 @@ namespace BankWeb.Services
             restRequest.AddUrlSegment("username", username);
 
             //spec mentioned change picture, contact details n pw
+
+            //Ezra updated the code 
+            //Name is not he pk , its the username , so I included name change 
+            if (userUpdateProfile.Name != null)
+            {
+                restRequest.AddParameter("Name", userUpdateProfile.Name);
+            }
+
+            //till here
             if (userUpdateProfile.Email != null)
             {
                 restRequest.AddParameter("Email", userUpdateProfile.Email);

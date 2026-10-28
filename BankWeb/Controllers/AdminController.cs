@@ -11,20 +11,26 @@ namespace BankWeb.Controllers
     public class AdminController : Controller
     {
         private readonly BankApiClient _api;
+        //only alow these fields when sorting 
         private static readonly string[] SortFields = { "date", "amount", "type" };
+        //only allow these fields for trnsaction type 
         private static readonly string[] TransactionTypes = { "Deposit", "Withdrawal", "TransferIn", "TransferOut" };
+
 
         public AdminController(BankApiClient bankApiClient)
         {
             _api = bankApiClient;
         }
 
-        //admin dashboard: user counts + latest audit entries
+        
+        //Admin Dashboard (has user coounts and latest audit entries) 
         //GET /Admin
         public async Task<IActionResult> Index()
         {
+            //call the service to fetch user count and get audit 
             var users = await _api.SearchUser(null);
             var audit = await _api.GetAudit(1, 5);
+
 
             if (!users.Success || !audit.Success)
             {
@@ -231,7 +237,7 @@ namespace BankWeb.Controllers
         [HttpGet]
         public IActionResult Transactions()
         {
-            return View();
+            return View("Transaction");
         }
 
         //GET /Admin/TransactionsTable?search=&type=&from=&to=&page=&sortBy=&sortDir=

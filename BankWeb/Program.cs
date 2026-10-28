@@ -1,5 +1,6 @@
 using System.Globalization;
 using BankWeb.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +29,30 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/Home/StatusCode/403";
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
         options.SlidingExpiration = true;
+
+        options.Events = new CookieAuthenticationEvents
+        {
+            //basically run this when the application tries to validates any cookies (context here contains the information of the cookie)
+            OnValidatePrincipal = async context =>
+            {
+                // try to get username of logging in user from context (principal is who is the user and identity is how the user is identified)
+                string? username = context.Principal?.Identity?.Name;
+                //if null jsut skip it 
+                if (username == null) return;
+                //get the BankApiClient tool so the service can be used her e
+                var api = context.HttpContext.RequestServices.GetRequiredService<BankApiClient>();
+                //get user details  based on username 
+                var result = await api.GetUser(username);
+                //if doesnt exist 
+                if (result.Success && result.Data != null && !result.Data.IsActive)
+                {
+                    //reject login cookie 
+                    context.RejectPrincipal();
+                    //sign user out by removing teh authenicated cookie 
+                    await context.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                }
+            }
+        };
     });
 builder.Services.AddAuthorization();
 

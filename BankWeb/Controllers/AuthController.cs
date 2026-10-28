@@ -59,6 +59,13 @@ namespace BankWeb.Controllers
                 
                 return View(userCreateProfile);
             }
+            //UPDATE BY EZRA 
+            //Create a account so user automatically has an account to work with on registration (makes more sense) 
+            //basically what this line means if by default ill use the value before ?? , if its null, then ill use the one on the right 
+            string newUsername = result.Data?.Username ?? userCreateProfile.Username.Trim().ToLower();
+            //create account through the service 
+            var account = await _bankApiClient.CreateAccount(newUsername, "Everyday Account", 0);
+
 
             //registration succeeded, go to login page
             TempData["Success"] = "Registration Successful. You can login now";

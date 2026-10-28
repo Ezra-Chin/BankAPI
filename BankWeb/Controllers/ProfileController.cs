@@ -153,6 +153,7 @@ namespace BankWeb.Controllers
                 });
             }
 
+
             return Json(new {
                 success = true, message = "Your profile has been updated"
             });

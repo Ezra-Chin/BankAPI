@@ -1,7 +1,9 @@
-﻿@model List<UserResponse>
+﻿@* Basically stating expecting user response as the model *@
+@model List<UserResponse>
 @{
     ViewData["Title"] = "Users";
     string search = ViewBag.Search;
+    // get user name from cookei 
     string myUsername = User.Identity?.Name ?? "";
 }
 

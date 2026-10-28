@@ -15,7 +15,7 @@ var sortDir = 'desc';
 var auditPage = 1;
 
 
-//load the html from the controller and put it inside the div
+//load the html from the controller and put it inside the div (This is mainfly for partial views )
 function loadIntoDiv(url, divId)
 
 {
@@ -127,6 +127,8 @@ function goToPage(number) {
 
 
 //load the tables when the page opens
+//if is adminTransactions then load the htmlcs for transactions and audit if its auditTable
+//it checks the entire page if there's these specific id, if yes , replace the div with the newly fetch PartialDiv
 function adminPageLoaded() {
     if (document.getElementById('adminTransactions') != null) {
         currentTable = 'transactions';
@@ -141,4 +143,5 @@ function adminPageLoaded() {
 
 
 //run when the page finishes loading
+//auto calls adminPageLoaded for the page 
 document.addEventListener('DOMContentLoaded', adminPageLoaded);

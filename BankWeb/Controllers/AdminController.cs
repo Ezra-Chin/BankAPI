@@ -57,10 +57,11 @@ namespace BankWeb.Controllers
             var result = await _api.SearchUser(search);
             if (!result.Success || result.Data == null)
             {
-                //e.g. service is down -> show a message instead of an empty table
+                // service is down -> show a message instead of an empty table
                 ViewBag.Error = result.ErrorMessage;
                 return View(new List<UserResponse>());
             }
+            //show the webpage at /Views/admin/Users
             return View(result.Data);
         }
 
@@ -68,6 +69,7 @@ namespace BankWeb.Controllers
         [HttpGet]
         public IActionResult CreateUser()
         {
+            //shows the webpage at /Views/admin/CreateUser
             return View(new UserCreateProfile());
         }
 
@@ -125,6 +127,7 @@ namespace BankWeb.Controllers
                 Address = result.Data.Address,
                 Phone = result.Data.Phone
             };
+            //shows the webpage ad /admin/edituser/
             return View(user);
         }
 
@@ -241,6 +244,8 @@ namespace BankWeb.Controllers
         [HttpGet]
         public IActionResult Transactions()
         {
+            //shows the webpage ad /admin/transactions/
+
             return View();
         }
 
@@ -286,6 +291,7 @@ namespace BankWeb.Controllers
         [HttpGet]
         public IActionResult AuditTrail()
         {
+            //shows the webpage ad /admin/audittrail
             return View();
         }
 
@@ -299,6 +305,11 @@ namespace BankWeb.Controllers
                 ViewBag.Error = result.ErrorMessage;
                 return PartialView("AuditTableView", new PagedResult<AuditEntry>());
             }
+
+            //if only this html is caleld specifically , that would mean taht only this html will be displayed and nothign else 
+            //only need ot update teh audit table and not the entier page 
+            //basically it wont get aclled by url, url will call a proper page lets say /admin/audittrail , then shit changes in the 
+            //html and it will be used to call the js, then the js wil lcall this to resend the partial view for this particular section 
             return PartialView("AuditTableView", result.Data);
         }
 
@@ -309,6 +320,8 @@ namespace BankWeb.Controllers
             var result = await _api.AddAudit(adminUsername, action, details);
             if (!result.Success)
             {
+                //temp data is temp storage built in in asp.net 
+                //it is like a view bag in a way 
                 TempData["Error"] = "The action was completed, but it could not be recorded in the audit trail. " + result.ErrorMessage;
             }
         }

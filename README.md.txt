@@ -47,3 +47,7 @@ All seeded users have the password: **`Password123`**
 1. Start Part A 
 2. Start The Entire Project for Part B 
 3. Served at localhost:5260
+
+seed for admin 
+username: admin 
+password: Admin123

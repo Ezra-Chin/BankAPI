@@ -92,6 +92,7 @@ namespace BankWeb.Controllers
             }
 
             string username = result.Data?.Username ?? userCreateProfile.Username;
+            await _api.CreateAccount(username, "Everyday Account", 0);
             await Audit("CREATE_USER", "Created customer " + username);
             TempData["Success"] = "User " + username + " was created.";
             return RedirectToAction(nameof(Users));
@@ -237,7 +238,7 @@ namespace BankWeb.Controllers
         [HttpGet]
         public IActionResult Transactions()
         {
-            return View("Transaction");
+            return View();
         }
 
         //GET /Admin/TransactionsTable?search=&type=&from=&to=&page=&sortBy=&sortDir=

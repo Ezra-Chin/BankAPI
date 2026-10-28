@@ -2,6 +2,8 @@
 
 namespace BankWeb.Models
 {
+    // models for the accounts, transaction history and transfer pages
+
     public class AccountModel
     {
         public string AccountNumber { get; set; } = "";
@@ -66,6 +68,7 @@ namespace BankWeb.Models
         public PagedResult<TransactionModel> Result { get; set; } = new PagedResult<TransactionModel>();
     }
 
+    // used by _Pager.cshtml to show the page buttons
     public class PagerModel
     {
         public int Page { get; set; }

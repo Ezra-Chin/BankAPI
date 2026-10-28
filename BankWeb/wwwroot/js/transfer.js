@@ -1,4 +1,7 @@
-﻿function loadTransferForm() {
+﻿// transfer money page
+// load the transfer form into the page
+function loadTransferForm() {
+    // the account picked on the my accounts page (can be empty)
     var from = document.getElementById('startFrom').value;
     var apiUrl = '/Transfer/Form?from=' + from;
 
@@ -10,9 +13,11 @@
             return response.text();
         })
         .then(data => {
+            // put the form into the empty box
             document.getElementById('transferArea').innerHTML = data;
         })
         .catch(error => {
+            // could not reach the server, show an error
             console.error('Fetch error:', error);
             document.getElementById('transferMessage').innerHTML =
                 '<div class="alert alert-danger">Could not load the transfer form. Please try again.</div>';
@@ -20,6 +25,7 @@
 }
 
 function performTransfer() {
+    // read what the user typed
     var amount = document.getElementById('Amount').value;
     var data = {
         FromAccountNumber: document.getElementById('FromAccountNumber').value,
@@ -34,12 +40,14 @@ function performTransfer() {
         'RequestVerificationToken': document.getElementById('requestToken').value // Security token (anti-forgery)
     };
 
+    // POST with the data turned into a json string
     const requestOptions = {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(data) 
     };
 
+    // hide the button while sending so  double click cant send the money twice
     document.getElementById('transferButton').style.display = "none";
     document.getElementById('transferMessage').innerHTML = '';
 
@@ -61,4 +69,5 @@ function performTransfer() {
         });
 }
 
+// load the form when the page has loaded
 document.addEventListener("DOMContentLoaded", loadTransferForm);

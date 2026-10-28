@@ -16,6 +16,8 @@ namespace BankWeb.Controllers
             _api = api;
         }
 
+        // GET /Transfer?from=ACCOUNT1002
+        // the transfer page "from" is the account picked on the my accounts page andn can be empty
         [HttpGet]
         public IActionResult Index(string? from)
         {
@@ -23,6 +25,8 @@ namespace BankWeb.Controllers
             return View();
         }
 
+        // GET /Transfer/Form?from=ACCOUNT1002
+        // called by fetch()re adn turns the empty form with the user's accounts in the drop down
         [HttpGet]
         public async Task<IActionResult> Form(string? from)
         {
@@ -31,9 +35,11 @@ namespace BankWeb.Controllers
             return PartialView("_TransferForm", model);
         }
 
+        // POST /Transfer/Send
         [HttpPost]
         public async Task<IActionResult> Send([FromBody] TransferViewModel model)
         {
+            // none was sent
             if (model == null)
             {
                 return BadRequest();
@@ -44,6 +50,7 @@ namespace BankWeb.Controllers
                 return PartialView("_TransferForm", model);
             }
 
+            // checks done on the server so user cannot skip
             var fromAccount = model.MyAccounts.FirstOrDefault(a => a.AccountNumber == model.FromAccountNumber);
             if (!string.IsNullOrEmpty(model.FromAccountNumber) && fromAccount == null)
             {
@@ -61,14 +68,17 @@ namespace BankWeb.Controllers
             {
                 ModelState.AddModelError("Amount", $"Insufficient funds. Available balance is {fromAccount.Balance.ToString("C", CultureInfo.CurrentCulture)}.");
             }
+            // if any check failed then send form back 
             if (!ModelState.IsValid)
             {
                 return PartialView("_TransferForm", model);
             }
 
+            // ask web service to fo the transfer
             var result = await _api.Transfer(model.FromAccountNumber, model.ToAccountNumber, model.Amount!.Value, model.Description);
             if (!result.Success)
             {
+                // turn the rror code from the web service into clear message
                 switch (result.Error?.Error)
                 {
                     case "ACCOUNT_NOT_FOUND":
@@ -90,6 +100,7 @@ namespace BankWeb.Controllers
                 return PartialView("_TransferForm", model);
             }
 
+            // transfer succeeded, send backan emoty form
             ModelState.Clear();
             var fresh = new TransferViewModel { FromAccountNumber = model.FromAccountNumber };
             await LoadMyAccounts(fresh);

@@ -17,6 +17,8 @@ namespace BankWeb.Controllers
         private static readonly string[] TransactionTypes = { "Deposit", "Withdrawal", "TransferIn", "TransferOut" };
 
 
+        //frameowkr calls thsi for me 
+        //bankApiClient here is the service to help call the api 
         public AdminController(BankApiClient bankApiClient)
         {
             _api = bankApiClient;
@@ -39,10 +41,11 @@ namespace BankWeb.Controllers
 
             if (users.Success && users.Data != null)
             {
+                //pass the data using a viewbag (both the total users and active users) 
                 ViewBag.TotalUsers = users.Data.Count;
                 ViewBag.ActiveUsers = users.Data.Count(u => u.IsActive);
             }
-
+            //show the webpage at /Views/admin/index.cshtml
             return View(audit.Data?.Items ?? new List<AuditEntry>());
         }
 

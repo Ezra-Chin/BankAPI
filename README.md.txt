@@ -51,3 +51,10 @@ All seeded users have the password: **`Password123`**
 seed for admin 
 username: admin 
 password: Admin123
+
+
+# Changes made to Part A 
+1. Added Role Column for Users 
+2. There's now a new user seeded called "admin"
+3. Added Audit Table Entry 
+
